@@ -1,7 +1,7 @@
 Ini ialah JawiPython daripada CPython versi 3.11.0 alfa 1
 =========================================================
 
-.. Kandungan::
+.. contents::
 
 Cara Kompil (Build Instructions)
 --------------------------------
@@ -11,16 +11,14 @@ Untuk Unix, Linux, BSD, macOS, dan Cygwin::
     ./configure
     make regen-pegen
     make
-    mv python3 jawipython3
-    sudo chmod +x python3
 
 Ini akan membina fail binari Python dalam Bahasa Melayu sebagai ``python3``. Ini TIDAK akan memasang python kepada sistem anda, hanya mencipta sebuah fail binari yang boleh dieksekusi.
 
-Untuk mengetahui lebih lanjut tentang pengkompilan dalam MacOS dan Windows: Pergi ke ...
+Untuk mengetahui lebih lanjut tentang pengkompilan untuk MacOS dan Windows: Pergi ke ...
 
 
-Keyword Translations
---------------------
+Terjemahan Kata Kunci
+---------------------
 
 ======== ===========================
 Inggeris Bahasa Melayu (Rumi)
