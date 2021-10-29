@@ -1,8 +1,72 @@
 Ini ialah JawiPython daripada CPython versi 3.11.0 alfa 1
-=====================================
+=========================================================
+
+.. contents::
+
+Cara Kompil (Build Instructions)
+--------------------------------
+
+Untuk Unix, Linux, BSD, macOS, dan Cygwin::
+
+    ./configure
+    make regen-pegen
+    make
+    mv python3 jawipython3
+    sudo chmod +x python3
+
+Ini akan membina fail binari Python dalam Bahasa Melayu sebagai ``python3``.
+
+Untuk mengetahui lebih lanjut tentang pengkompilan dalam MacOS dan Windows
+
+
+Keyword Translations
+--------------------
+
+======== ===========================
+Inggeris Bahasa Melayu (Rumi)
+======== ===========================
+False    Palsu
+None     Tiada
+True     Benar
+and      dan
+as       sebagai
+assert   =
+async    =
+await    =
+break    putus
+class    kelas
+continue lanjut
+def      fungsi
+del      hapus
+elif     =
+else     lain
+except   kecuali
+finally  akhirnya
+for      untuk
+from     dari
+global   =
+if       jika
+import   =
+in       dalam
+is       ialah
+lambda   =
+nonlocal =
+not      bukan
+or       atau
+pass     =
+raise    =
+return   kembali
+try      cuba
+while    ketika
+with     dengan
+yield    =
+======== ===========================
+
+Fungsi piawai (Builtin Functions)
+---------------------------------
 
 ========================= ===========================
-        Inggeris                 Bahasa Melayu
+        Inggeris              Bahasa Melayu (Rumi)
 ========================= ===========================
 ArithmeticError           =
 AssertionError            =
@@ -164,18 +228,7 @@ zip                       =
 
 .. _Developer Guide: https://devguide.python.org/
 
-Build Instructions
-------------------
 
-Untuk Unix, Linux, BSD, macOS, dan Cygwin::
-
-    ./configure
-    make regen-pegen
-    make
-    mv python3 jawipython3
-    sudo chmod +x python3
-
-Ini akan membina fail binari Python dalam Bahasa Melayu sebagai ``python3``.
 
 You can pass many options to the configure script; run ``./configure --help``
 to find out more.  On macOS case-insensitive file systems and on Cygwin,
