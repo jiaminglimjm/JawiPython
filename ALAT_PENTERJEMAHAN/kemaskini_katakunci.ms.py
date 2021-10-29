@@ -41,7 +41,9 @@ dengan buka('../Grammar/python.en.gram', 'r') sebagai f:
 untuk garis dalam pisah(MEJA_TERJEMAHAN, '\n'):
     inggeris, rumi, jawi = pisah(garis)
     jika bukan (rumi == '=' atau jawi == '='):
-        tatabahasa = ganti(tatabahasa, "'%s'" % inggeris, "('%s'|'%s'|'%s')" % (inggeris, rumi, jawi))
+        tatabahasa = ganti(tatabahasa, "a='%s'" % inggeris, "|||+|||=%s" % inggeris)
+        tatabahasa = ganti(tatabahasa, "'%s'" % inggeris, "('%s'|'%s'|'%s')" % (inggeris, jawi, rumi))
+        tatabahasa = ganti(tatabahasa, "|||+|||=%s" % inggeris, "a='%s'" % inggeris,)
 
 dengan buka('../Grammar/python.gram', 'w') sebagai f:
     f.tulis(tatabahasa)

@@ -113,26 +113,26 @@ simple_stmts[asdl_stmt_seq*]:
 simple_stmt[stmt_ty] (memo):
     | assignment
     | e=star_expressions { _PyAST_Expr(e, EXTRA) }
-    | &('return'|'kembali'|'كمبالي') return_stmt
-    | &('import' | ('from'|'dari'|'دري')) import_stmt
+    | &('return'|'كمبالي'|'kembali') return_stmt
+    | &('import' | ('from'|'دري'|'dari')) import_stmt
     | &'raise' raise_stmt
     | 'pass' { _PyAST_Pass(EXTRA) }
-    | &('del'|'hapus'|'هاڤوس') del_stmt
+    | &('del'|'هاڤوس'|'hapus') del_stmt
     | &'yield' yield_stmt
     | &'assert' assert_stmt
-    | ('break'|'putus'|'ڤوتوس') { _PyAST_Break(EXTRA) }
-    | ('continue'|'lanjut'|'لنجوت') { _PyAST_Continue(EXTRA) }
+    | ('break'|'ڤوتوس'|'putus') { _PyAST_Break(EXTRA) }
+    | ('continue'|'لنجوت'|'lanjut') { _PyAST_Continue(EXTRA) }
     | &'global' global_stmt
     | &'nonlocal' nonlocal_stmt
 
 compound_stmt[stmt_ty]:
-    | &(('def'|'fungsi'|'فوڠسي') | '@' | ASYNC) function_def
-    | &('if'|'jika'|'جک') if_stmt
-    | &(('class'|'kelas'|'كلس') | '@') class_def
-    | &(('with'|'dengan'|'دڠن') | ASYNC) with_stmt
-    | &(('for'|'untuk'|'ونتوق') | ASYNC) for_stmt
-    | &('try'|'cuba'|'چوبا') try_stmt
-    | &('while'|'ketika'|'کتيک') while_stmt
+    | &(('def'|'فوڠسي'|'fungsi') | '@' | ASYNC) function_def
+    | &('if'|'جک'|'jika') if_stmt
+    | &(('class'|'كلس'|'kelas') | '@') class_def
+    | &(('with'|'دڠن'|'dengan') | ASYNC) with_stmt
+    | &(('for'|'ونتوق'|'untuk') | ASYNC) for_stmt
+    | &('try'|'چوبا'|'cuba') try_stmt
+    | &('while'|'کتيک'|'ketika') while_stmt
     | match_stmt
 
 # SIMPLE STATEMENTS
@@ -174,10 +174,10 @@ augassign[AugOperator*]:
     | '//=' { _PyPegen_augoperator(p, FloorDiv) }
 
 return_stmt[stmt_ty]:
-    | ('return'|'kembali'|'كمبالي') a=[star_expressions] { _PyAST_Return(a, EXTRA) }
+    | ('return'|'كمبالي'|'kembali') a=[star_expressions] { _PyAST_Return(a, EXTRA) }
 
 raise_stmt[stmt_ty]:
-    | 'raise' a=expression b=[('from'|'dari'|'دري') z=expression { z }] { _PyAST_Raise(a, b, EXTRA) }
+    | 'raise' a=expression b=[('from'|'دري'|'dari') z=expression { z }] { _PyAST_Raise(a, b, EXTRA) }
     | 'raise' { _PyAST_Raise(NULL, NULL, EXTRA) }
 
 global_stmt[stmt_ty]: 'global' a[asdl_expr_seq*]=','.NAME+ {
@@ -187,7 +187,7 @@ nonlocal_stmt[stmt_ty]: 'nonlocal' a[asdl_expr_seq*]=','.NAME+ {
     _PyAST_Nonlocal(CHECK(asdl_identifier_seq*, _PyPegen_map_names_to_ids(p, a)), EXTRA) }
 
 del_stmt[stmt_ty]:
-    | ('del'|'hapus'|'هاڤوس') a=del_targets &(';' | NEWLINE) { _PyAST_Delete(a, EXTRA) }
+    | ('del'|'هاڤوس'|'hapus') a=del_targets &(';' | NEWLINE) { _PyAST_Delete(a, EXTRA) }
     | invalid_del_stmt
 
 yield_stmt[stmt_ty]: y=yield_expr { _PyAST_Expr(y, EXTRA) }
@@ -202,9 +202,9 @@ import_stmt[stmt_ty]: import_name | import_from
 import_name[stmt_ty]: 'import' a=dotted_as_names { _PyAST_Import(a, EXTRA) }
 # note below: the ('.' | '...') is necessary because '...' is tokenized as ELLIPSIS
 import_from[stmt_ty]:
-    | ('from'|'dari'|'دري') a=('.' | '...')* b=dotted_name 'import' c=import_from_targets {
+    | ('from'|'دري'|'dari') a=('.' | '...')* b=dotted_name 'import' c=import_from_targets {
         _PyAST_ImportFrom(b->v.Name.id, c, _PyPegen_seq_count_dots(a), EXTRA) }
-    | ('from'|'dari'|'دري') a=('.' | '...')+ 'import' b=import_from_targets {
+    | ('from'|'دري'|'dari') a=('.' | '...')+ 'import' b=import_from_targets {
         _PyAST_ImportFrom(NULL, b, _PyPegen_seq_count_dots(a), EXTRA) }
 import_from_targets[asdl_alias_seq*]:
     | '(' a=import_from_as_names [','] ')' { a }
@@ -214,13 +214,13 @@ import_from_targets[asdl_alias_seq*]:
 import_from_as_names[asdl_alias_seq*]:
     | a[asdl_alias_seq*]=','.import_from_as_name+ { a }
 import_from_as_name[alias_ty]:
-    | a=NAME b=[('as'|'sebagai'|'سباڬاي') z=NAME { z }] { _PyAST_alias(a->v.Name.id,
+    | a=NAME b=[('as'|'سباڬاي'|'sebagai') z=NAME { z }] { _PyAST_alias(a->v.Name.id,
                                                (b) ? ((expr_ty) b)->v.Name.id : NULL,
                                                EXTRA) }
 dotted_as_names[asdl_alias_seq*]:
     | a[asdl_alias_seq*]=','.dotted_as_name+ { a }
 dotted_as_name[alias_ty]:
-    | a=dotted_name b=[('as'|'sebagai'|'سباڬاي') z=NAME { z }] { _PyAST_alias(a->v.Name.id,
+    | a=dotted_name b=[('as'|'سباڬاي'|'sebagai') z=NAME { z }] { _PyAST_alias(a->v.Name.id,
                                                       (b) ? ((expr_ty) b)->v.Name.id : NULL,
                                                       EXTRA) }
 dotted_name[expr_ty]:
@@ -249,7 +249,7 @@ class_def[stmt_ty]:
 
 class_def_raw[stmt_ty]:
     | invalid_class_def_raw
-    | ('class'|'kelas'|'كلس') a=NAME b=['(' z=[arguments] ')' { z }] &&':' c=block {
+    | ('class'|'كلس'|'kelas') a=NAME b=['(' z=[arguments] ')' { z }] &&':' c=block {
         _PyAST_ClassDef(a->v.Name.id,
                      (b) ? ((expr_ty) b)->v.Call.args : NULL,
                      (b) ? ((expr_ty) b)->v.Call.keywords : NULL,
@@ -264,11 +264,11 @@ function_def[stmt_ty]:
 
 function_def_raw[stmt_ty]:
     | invalid_def_raw
-    | ('def'|'fungsi'|'فوڠسي') n=NAME '(' params=[params] ')' a=['->' z=expression { z }] &&':' tc=[func_type_comment] b=block {
+    | ('def'|'فوڠسي'|'fungsi') n=NAME '(' params=[params] ')' a=['->' z=expression { z }] &&':' tc=[func_type_comment] b=block {
         _PyAST_FunctionDef(n->v.Name.id,
                         (params) ? params : CHECK(arguments_ty, _PyPegen_empty_arguments(p)),
                         b, NULL, a, NEW_TYPE_COMMENT(p, tc), EXTRA) }
-    | ASYNC ('def'|'fungsi'|'فوڠسي') n=NAME '(' params=[params] ')' a=['->' z=expression { z }] &&':' tc=[func_type_comment] b=block {
+    | ASYNC ('def'|'فوڠسي'|'fungsi') n=NAME '(' params=[params] ')' a=['->' z=expression { z }] &&':' tc=[func_type_comment] b=block {
         CHECK_VERSION(
             stmt_ty,
             5,
@@ -346,9 +346,9 @@ default[expr_ty]: '=' a=expression { a }
 
 if_stmt[stmt_ty]:
     | invalid_if_stmt
-    | ('if'|'jika'|'جک') a=named_expression ':' b=block c=elif_stmt {
+    | ('if'|'جک'|'jika') a=named_expression ':' b=block c=elif_stmt {
         _PyAST_If(a, b, CHECK(asdl_stmt_seq*, _PyPegen_singleton_seq(p, c)), EXTRA) }
-    | ('if'|'jika'|'جک') a=named_expression ':' b=block c=[else_block] { _PyAST_If(a, b, c, EXTRA) }
+    | ('if'|'جک'|'jika') a=named_expression ':' b=block c=[else_block] { _PyAST_If(a, b, c, EXTRA) }
 elif_stmt[stmt_ty]:
     | invalid_elif_stmt
     | 'elif' a=named_expression ':' b=block c=elif_stmt {
@@ -356,23 +356,23 @@ elif_stmt[stmt_ty]:
     | 'elif' a=named_expression ':' b=block c=[else_block] { _PyAST_If(a, b, c, EXTRA) }
 else_block[asdl_stmt_seq*]:
     | invalid_else_stmt
-    | ('else'|'lain'|'لاءين') &&':' b=block { b }
+    | ('else'|'لاءين'|'lain') &&':' b=block { b }
 
 # While statement
 # ---------------
 
 while_stmt[stmt_ty]:
     | invalid_while_stmt
-    | ('while'|'ketika'|'کتيک') a=named_expression ':' b=block c=[else_block] { _PyAST_While(a, b, c, EXTRA) }
+    | ('while'|'کتيک'|'ketika') a=named_expression ':' b=block c=[else_block] { _PyAST_While(a, b, c, EXTRA) }
 
 # For statement
 # -------------
 
 for_stmt[stmt_ty]:
     | invalid_for_stmt
-    | ('for'|'untuk'|'ونتوق') t=star_targets ('in'|'dalam'|'دالم') ~ ex=star_expressions &&':' tc=[TYPE_COMMENT] b=block el=[else_block] {
+    | ('for'|'ونتوق'|'untuk') t=star_targets ('in'|'دالم'|'dalam') ~ ex=star_expressions &&':' tc=[TYPE_COMMENT] b=block el=[else_block] {
         _PyAST_For(t, ex, b, el, NEW_TYPE_COMMENT(p, tc), EXTRA) }
-    | ASYNC ('for'|'untuk'|'ونتوق') t=star_targets ('in'|'dalam'|'دالم') ~ ex=star_expressions &&':' tc=[TYPE_COMMENT] b=block el=[else_block] {
+    | ASYNC ('for'|'ونتوق'|'untuk') t=star_targets ('in'|'دالم'|'dalam') ~ ex=star_expressions &&':' tc=[TYPE_COMMENT] b=block el=[else_block] {
         CHECK_VERSION(stmt_ty, 5, "Async for loops are", _PyAST_AsyncFor(t, ex, b, el, NEW_TYPE_COMMENT(p, tc), EXTRA)) }
     | invalid_for_target
 
@@ -381,18 +381,18 @@ for_stmt[stmt_ty]:
 
 with_stmt[stmt_ty]:
     | invalid_with_stmt_indent
-    | ('with'|'dengan'|'دڠن') '(' a[asdl_withitem_seq*]=','.with_item+ ','? ')' ':' b=block {
+    | ('with'|'دڠن'|'dengan') '(' a[asdl_withitem_seq*]=','.with_item+ ','? ')' ':' b=block {
         _PyAST_With(a, b, NULL, EXTRA) }
-    | ('with'|'dengan'|'دڠن') a[asdl_withitem_seq*]=','.with_item+ ':' tc=[TYPE_COMMENT] b=block {
+    | ('with'|'دڠن'|'dengan') a[asdl_withitem_seq*]=','.with_item+ ':' tc=[TYPE_COMMENT] b=block {
         _PyAST_With(a, b, NEW_TYPE_COMMENT(p, tc), EXTRA) }
-    | ASYNC ('with'|'dengan'|'دڠن') '(' a[asdl_withitem_seq*]=','.with_item+ ','? ')' ':' b=block {
+    | ASYNC ('with'|'دڠن'|'dengan') '(' a[asdl_withitem_seq*]=','.with_item+ ','? ')' ':' b=block {
        CHECK_VERSION(stmt_ty, 5, "Async with statements are", _PyAST_AsyncWith(a, b, NULL, EXTRA)) }
-    | ASYNC ('with'|'dengan'|'دڠن') a[asdl_withitem_seq*]=','.with_item+ ':' tc=[TYPE_COMMENT] b=block {
+    | ASYNC ('with'|'دڠن'|'dengan') a[asdl_withitem_seq*]=','.with_item+ ':' tc=[TYPE_COMMENT] b=block {
        CHECK_VERSION(stmt_ty, 5, "Async with statements are", _PyAST_AsyncWith(a, b, NEW_TYPE_COMMENT(p, tc), EXTRA)) }
     | invalid_with_stmt
 
 with_item[withitem_ty]:
-    | e=expression ('as'|'sebagai'|'سباڬاي') t=star_target &(',' | ')' | ':') { _PyAST_withitem(e, t, p->arena) }
+    | e=expression ('as'|'سباڬاي'|'sebagai') t=star_target &(',' | ')' | ':') { _PyAST_withitem(e, t, p->arena) }
     | invalid_with_item
     | e=expression { _PyAST_withitem(e, NULL, p->arena) }
 
@@ -401,21 +401,21 @@ with_item[withitem_ty]:
 
 try_stmt[stmt_ty]:
     | invalid_try_stmt
-    | ('try'|'cuba'|'چوبا') &&':' b=block f=finally_block { _PyAST_Try(b, NULL, NULL, f, EXTRA) }
-    | ('try'|'cuba'|'چوبا') &&':' b=block ex[asdl_excepthandler_seq*]=except_block+ el=[else_block] f=[finally_block] { _PyAST_Try(b, ex, el, f, EXTRA) }
+    | ('try'|'چوبا'|'cuba') &&':' b=block f=finally_block { _PyAST_Try(b, NULL, NULL, f, EXTRA) }
+    | ('try'|'چوبا'|'cuba') &&':' b=block ex[asdl_excepthandler_seq*]=except_block+ el=[else_block] f=[finally_block] { _PyAST_Try(b, ex, el, f, EXTRA) }
 
 # Except statement
 # ----------------
 
 except_block[excepthandler_ty]:
     | invalid_except_stmt_indent
-    | ('except'|'kecuali'|'كچوالي') e=expression t=[('as'|'sebagai'|'سباڬاي') z=NAME { z }] ':' b=block {
+    | ('except'|'كچوالي'|'kecuali') e=expression t=[('as'|'سباڬاي'|'sebagai') z=NAME { z }] ':' b=block {
         _PyAST_ExceptHandler(e, (t) ? ((expr_ty) t)->v.Name.id : NULL, b, EXTRA) }
-    | ('except'|'kecuali'|'كچوالي') ':' b=block { _PyAST_ExceptHandler(NULL, NULL, b, EXTRA) }
+    | ('except'|'كچوالي'|'kecuali') ':' b=block { _PyAST_ExceptHandler(NULL, NULL, b, EXTRA) }
     | invalid_except_stmt
 finally_block[asdl_stmt_seq*]:
     | invalid_finally_stmt
-    | ('finally'|'akhirnya'|'اخيرڽ') &&':' a=block { a }
+    | ('finally'|'اخيرڽ'|'akhirnya') &&':' a=block { a }
 
 # Match statement
 # ---------------
@@ -435,7 +435,7 @@ case_block[match_case_ty]:
     | "case" pattern=patterns guard=guard? ':' body=block {
         _PyAST_match_case(pattern, guard, body, p->arena) }
 
-guard[expr_ty]: ('if'|'jika'|'جک') guard=named_expression { guard }
+guard[expr_ty]: ('if'|'جک'|'jika') guard=named_expression { guard }
 
 patterns[pattern_ty]:
     | patterns[asdl_pattern_seq*]=open_sequence_pattern {
@@ -447,7 +447,7 @@ pattern[pattern_ty]:
     | or_pattern
 
 as_pattern[pattern_ty]:
-    | pattern=or_pattern ('as'|'sebagai'|'سباڬاي') target=pattern_capture_target {
+    | pattern=or_pattern ('as'|'سباڬاي'|'sebagai') target=pattern_capture_target {
         _PyAST_MatchAs(pattern, target->v.Name.id, EXTRA) }
     | invalid_as_pattern
 
@@ -470,18 +470,18 @@ literal_pattern[pattern_ty]:
     | value=signed_number !('+' | '-') { _PyAST_MatchValue(value, EXTRA) }
     | value=complex_number { _PyAST_MatchValue(value, EXTRA) }
     | value=strings { _PyAST_MatchValue(value, EXTRA) }
-    | ('None'|'Tiada'|'تياد') { _PyAST_MatchSingleton(Py_None, EXTRA) }
-    | ('True'|'Benar'|'بنر') { _PyAST_MatchSingleton(Py_True, EXTRA) }
-    | ('False'|'Palsu'|'ڤلسو') { _PyAST_MatchSingleton(Py_False, EXTRA) }
+    | ('None'|'تياد'|'Tiada') { _PyAST_MatchSingleton(Py_None, EXTRA) }
+    | ('True'|'بنر'|'Benar') { _PyAST_MatchSingleton(Py_True, EXTRA) }
+    | ('False'|'ڤلسو'|'Palsu') { _PyAST_MatchSingleton(Py_False, EXTRA) }
 
 # Literal expressions are used to restrict permitted mapping pattern keys
 literal_expr[expr_ty]:
     | signed_number !('+' | '-')
     | complex_number
     | strings
-    | ('None'|'Tiada'|'تياد') { _PyAST_Constant(Py_None, NULL, EXTRA) }
-    | ('True'|'Benar'|'بنر') { _PyAST_Constant(Py_True, NULL, EXTRA) }
-    | ('False'|'Palsu'|'ڤلسو') { _PyAST_Constant(Py_False, NULL, EXTRA) }
+    | ('None'|'تياد'|'Tiada') { _PyAST_Constant(Py_None, NULL, EXTRA) }
+    | ('True'|'بنر'|'Benar') { _PyAST_Constant(Py_True, NULL, EXTRA) }
+    | ('False'|'ڤلسو'|'Palsu') { _PyAST_Constant(Py_False, NULL, EXTRA) }
 
 complex_number[expr_ty]:
     | real=signed_real_number '+' imag=imaginary_number {
@@ -618,12 +618,12 @@ expressions[expr_ty]:
 
 expression[expr_ty] (memo):
     | invalid_expression
-    | a=disjunction ('if'|'jika'|'جک') b=disjunction ('else'|'lain'|'لاءين') c=expression { _PyAST_IfExp(b, a, c, EXTRA) }
+    | a=disjunction ('if'|'جک'|'jika') b=disjunction ('else'|'لاءين'|'lain') c=expression { _PyAST_IfExp(b, a, c, EXTRA) }
     | disjunction
     | lambdef
 
 yield_expr[expr_ty]:
-    | 'yield' ('from'|'dari'|'دري') a=expression { _PyAST_YieldFrom(a, EXTRA) }
+    | 'yield' ('from'|'دري'|'dari') a=expression { _PyAST_YieldFrom(a, EXTRA) }
     | 'yield' a=[star_expressions] { _PyAST_Yield(a, EXTRA) }
 
 star_expressions[expr_ty]:
@@ -651,21 +651,21 @@ named_expression[expr_ty]:
     | expression !':='
 
 disjunction[expr_ty] (memo):
-    | a=conjunction b=(('or'|'atau'|'اتاو') c=conjunction { c })+ { _PyAST_BoolOp(
+    | a=conjunction b=(('or'|'اتاو'|'atau') c=conjunction { c })+ { _PyAST_BoolOp(
         Or,
         CHECK(asdl_expr_seq*, _PyPegen_seq_insert_in_front(p, a, b)),
         EXTRA) }
     | conjunction
 
 conjunction[expr_ty] (memo):
-    | a=inversion b=(('and'|'dan'|'دان') c=inversion { c })+ { _PyAST_BoolOp(
+    | a=inversion b=(('and'|'دان'|'dan') c=inversion { c })+ { _PyAST_BoolOp(
         And,
         CHECK(asdl_expr_seq*, _PyPegen_seq_insert_in_front(p, a, b)),
         EXTRA) }
     | inversion
 
 inversion[expr_ty] (memo):
-    | ('not'|'bukan'|'بوكن') a=inversion { _PyAST_UnaryOp(Not, a, EXTRA) }
+    | ('not'|'بوكن'|'bukan') a=inversion { _PyAST_UnaryOp(Not, a, EXTRA) }
     | comparison
 
 # Comparisons operators
@@ -699,10 +699,10 @@ lte_bitwise_or[CmpopExprPair*]: '<=' a=bitwise_or { _PyPegen_cmpop_expr_pair(p, 
 lt_bitwise_or[CmpopExprPair*]: '<' a=bitwise_or { _PyPegen_cmpop_expr_pair(p, Lt, a) }
 gte_bitwise_or[CmpopExprPair*]: '>=' a=bitwise_or { _PyPegen_cmpop_expr_pair(p, GtE, a) }
 gt_bitwise_or[CmpopExprPair*]: '>' a=bitwise_or { _PyPegen_cmpop_expr_pair(p, Gt, a) }
-notin_bitwise_or[CmpopExprPair*]: ('not'|'bukan'|'بوكن') ('in'|'dalam'|'دالم') a=bitwise_or { _PyPegen_cmpop_expr_pair(p, NotIn, a) }
-in_bitwise_or[CmpopExprPair*]: ('in'|'dalam'|'دالم') a=bitwise_or { _PyPegen_cmpop_expr_pair(p, In, a) }
-isnot_bitwise_or[CmpopExprPair*]: ('is'|'ialah'|'اياله') ('not'|'bukan'|'بوكن') a=bitwise_or { _PyPegen_cmpop_expr_pair(p, IsNot, a) }
-is_bitwise_or[CmpopExprPair*]: ('is'|'ialah'|'اياله') a=bitwise_or { _PyPegen_cmpop_expr_pair(p, Is, a) }
+notin_bitwise_or[CmpopExprPair*]: ('not'|'بوكن'|'bukan') ('in'|'دالم'|'dalam') a=bitwise_or { _PyPegen_cmpop_expr_pair(p, NotIn, a) }
+in_bitwise_or[CmpopExprPair*]: ('in'|'دالم'|'dalam') a=bitwise_or { _PyPegen_cmpop_expr_pair(p, In, a) }
+isnot_bitwise_or[CmpopExprPair*]: ('is'|'اياله'|'ialah') ('not'|'بوكن'|'bukan') a=bitwise_or { _PyPegen_cmpop_expr_pair(p, IsNot, a) }
+is_bitwise_or[CmpopExprPair*]: ('is'|'اياله'|'ialah') a=bitwise_or { _PyPegen_cmpop_expr_pair(p, Is, a) }
 
 # Logical operators
 # -----------------
@@ -780,9 +780,9 @@ slice[expr_ty]:
 
 atom[expr_ty]:
     | NAME
-    | ('True'|'Benar'|'بنر') { _PyAST_Constant(Py_True, NULL, EXTRA) }
-    | ('False'|'Palsu'|'ڤلسو') { _PyAST_Constant(Py_False, NULL, EXTRA) }
-    | ('None'|'Tiada'|'تياد') { _PyAST_Constant(Py_None, NULL, EXTRA) }
+    | ('True'|'بنر'|'Benar') { _PyAST_Constant(Py_True, NULL, EXTRA) }
+    | ('False'|'ڤلسو'|'Palsu') { _PyAST_Constant(Py_False, NULL, EXTRA) }
+    | ('None'|'تياد'|'Tiada') { _PyAST_Constant(Py_None, NULL, EXTRA) }
     | &STRING strings
     | NUMBER
     | &'(' (tuple | group | genexp)
@@ -888,9 +888,9 @@ for_if_clauses[asdl_comprehension_seq*]:
     | a[asdl_comprehension_seq*]=for_if_clause+ { a }
 
 for_if_clause[comprehension_ty]:
-    | ASYNC ('for'|'untuk'|'ونتوق') a=star_targets ('in'|'dalam'|'دالم') ~ b=disjunction c[asdl_expr_seq*]=(('if'|'jika'|'جک') z=disjunction { z })* {
+    | ASYNC ('for'|'ونتوق'|'untuk') a=star_targets ('in'|'دالم'|'dalam') ~ b=disjunction c[asdl_expr_seq*]=(('if'|'جک'|'jika') z=disjunction { z })* {
         CHECK_VERSION(comprehension_ty, 6, "Async comprehensions are", _PyAST_comprehension(a, b, c, 1, p->arena)) }
-    | ('for'|'untuk'|'ونتوق') a=star_targets ('in'|'dalam'|'دالم') ~ b=disjunction c[asdl_expr_seq*]=(('if'|'jika'|'جک') z=disjunction { z })* {
+    | ('for'|'ونتوق'|'untuk') a=star_targets ('in'|'دالم'|'dalam') ~ b=disjunction c[asdl_expr_seq*]=(('if'|'جک'|'jika') z=disjunction { z })* {
         _PyAST_comprehension(a, b, c, 0, p->arena) }
     | invalid_for_target
 
@@ -1069,7 +1069,7 @@ invalid_kwarg:
             a, b, "expression cannot contain assignment, perhaps you meant \"==\"?") }
 
 expression_without_invalid[expr_ty]:
-    | a=disjunction ('if'|'jika'|'جک') b=disjunction ('else'|'lain'|'لاءين') c=expression { _PyAST_IfExp(b, a, c, EXTRA) }
+    | a=disjunction ('if'|'جک'|'jika') b=disjunction ('else'|'لاءين'|'lain') c=expression { _PyAST_IfExp(b, a, c, EXTRA) }
     | disjunction
     | lambdef
 invalid_legacy_expression:
@@ -1083,7 +1083,7 @@ invalid_expression:
     # Soft keywords need to also be ignored because they can be parsed as NAME NAME
    | !(NAME STRING | SOFT_KEYWORD) a=disjunction b=expression_without_invalid {
         RAISE_SYNTAX_ERROR_KNOWN_RANGE(a, b, "invalid syntax. Perhaps you forgot a comma?") }
-   | a=disjunction ('if'|'jika'|'جک') b=disjunction !(('else'|'lain'|'لاءين')|':') { RAISE_SYNTAX_ERROR_KNOWN_RANGE(a, b, "expected ('else'|'lain'|'لاءين') after ('if'|'jika'|'جک') expression") }
+   | a=disjunction ('if'|'جک'|'jika') b=disjunction !(('else'|'لاءين'|'lain')|':') { RAISE_SYNTAX_ERROR_KNOWN_RANGE(a, b, "expected ('else'|'لاءين'|'lain') after ('if'|'جک'|'jika') expression") }
 
 invalid_named_expression:
     | a=expression ':=' expression {
@@ -1091,7 +1091,7 @@ invalid_named_expression:
             a, "cannot use assignment expressions with %s", _PyPegen_get_expr_name(a)) }
     | a=NAME '=' b=bitwise_or !('='|':=') {
         p->in_raw_rule ? NULL : RAISE_SYNTAX_ERROR_KNOWN_RANGE(a, b, "invalid syntax. Maybe you meant '==' or ':=' instead of '='?") }
-    | !(list|tuple|genexp|('True'|'Benar'|'بنر')|('None'|'Tiada'|'تياد')|('False'|'Palsu'|'ڤلسو')) a=bitwise_or b='=' bitwise_or !('='|':=') {
+    | !(list|tuple|genexp|('True'|'بنر'|'Benar')|('None'|'تياد'|'Tiada')|('False'|'ڤلسو'|'Palsu')) a=bitwise_or b='=' bitwise_or !('='|':=') {
         p->in_raw_rule ? NULL : RAISE_SYNTAX_ERROR_KNOWN_LOCATION(a, "cannot assign to %s here. Maybe you meant '==' instead of '='?",
                                           _PyPegen_get_expr_name(a)) }
 
@@ -1120,7 +1120,7 @@ invalid_ann_assign_target[expr_ty]:
     | tuple
     | '(' a=invalid_ann_assign_target ')' { a }
 invalid_del_stmt:
-    | ('del'|'hapus'|'هاڤوس') a=star_expressions {
+    | ('del'|'هاڤوس'|'hapus') a=star_expressions {
         RAISE_SYNTAX_ERROR_INVALID_TARGET(DEL_TARGETS, a) }
 invalid_block:
     | NEWLINE !INDENT { RAISE_INDENTATION_ERROR("expected an indented block") }
@@ -1156,11 +1156,11 @@ invalid_double_type_comments:
     | TYPE_COMMENT NEWLINE TYPE_COMMENT NEWLINE INDENT {
         RAISE_SYNTAX_ERROR("Cannot have two type comments on def") }
 invalid_with_item:
-    | expression ('as'|'sebagai'|'سباڬاي') a=expression &(',' | ')' | ':') {
+    | expression ('as'|'سباڬاي'|'sebagai') a=expression &(',' | ')' | ':') {
         RAISE_SYNTAX_ERROR_INVALID_TARGET(STAR_TARGETS, a) }
 
 invalid_for_target:
-    | ASYNC? ('for'|'untuk'|'ونتوق') a=star_expressions {
+    | ASYNC? ('for'|'ونتوق'|'untuk') a=star_expressions {
         RAISE_SYNTAX_ERROR_INVALID_TARGET(FOR_TARGETS, a) }
 
 invalid_group:
@@ -1173,30 +1173,30 @@ invalid_import_from_targets:
         RAISE_SYNTAX_ERROR("trailing comma not allowed without surrounding parentheses") }
 
 invalid_with_stmt:
-    | [ASYNC] ('with'|'dengan'|'دڠن') ','.(expression [('as'|'sebagai'|'سباڬاي') star_target])+ &&':'
-    | [ASYNC] ('with'|'dengan'|'دڠن') '(' ','.(expressions [('as'|'sebagai'|'سباڬاي') star_target])+ ','? ')' &&':'
+    | [ASYNC] ('with'|'دڠن'|'dengan') ','.(expression [('as'|'سباڬاي'|'sebagai') star_target])+ &&':'
+    | [ASYNC] ('with'|'دڠن'|'dengan') '(' ','.(expressions [('as'|'سباڬاي'|'sebagai') star_target])+ ','? ')' &&':'
 invalid_with_stmt_indent:
-    | [ASYNC] a=('with'|'dengan'|'دڠن') ','.(expression [('as'|'sebagai'|'سباڬاي') star_target])+ ':' NEWLINE !INDENT {
-        RAISE_INDENTATION_ERROR("expected an indented block after ('with'|'dengan'|'دڠن') statement on line %d", a->lineno) }
-    | [ASYNC] a=('with'|'dengan'|'دڠن') '(' ','.(expressions [('as'|'sebagai'|'سباڬاي') star_target])+ ','? ')' ':' NEWLINE !INDENT {
-        RAISE_INDENTATION_ERROR("expected an indented block after ('with'|'dengan'|'دڠن') statement on line %d", a->lineno) }
+    | [ASYNC] a='with' ','.(expression [('as'|'سباڬاي'|'sebagai') star_target])+ ':' NEWLINE !INDENT {
+        RAISE_INDENTATION_ERROR("expected an indented block after ('with'|'دڠن'|'dengan') statement on line %d", a->lineno) }
+    | [ASYNC] a='with' '(' ','.(expressions [('as'|'سباڬاي'|'sebagai') star_target])+ ','? ')' ':' NEWLINE !INDENT {
+        RAISE_INDENTATION_ERROR("expected an indented block after ('with'|'دڠن'|'dengan') statement on line %d", a->lineno) }
 
 invalid_try_stmt:
-    | a=('try'|'cuba'|'چوبا') ':' NEWLINE !INDENT {
-        RAISE_INDENTATION_ERROR("expected an indented block after ('try'|'cuba'|'چوبا') statement on line %d", a->lineno) }
-    | ('try'|'cuba'|'چوبا') ':' block !(('except'|'kecuali'|'كچوالي') | ('finally'|'akhirnya'|'اخيرڽ')) { RAISE_SYNTAX_ERROR("expected ('except'|'kecuali'|'كچوالي') or ('finally'|'akhirnya'|'اخيرڽ') block") }
+    | a='try' ':' NEWLINE !INDENT {
+        RAISE_INDENTATION_ERROR("expected an indented block after ('try'|'چوبا'|'cuba') statement on line %d", a->lineno) }
+    | ('try'|'چوبا'|'cuba') ':' block !(('except'|'كچوالي'|'kecuali') | ('finally'|'اخيرڽ'|'akhirnya')) { RAISE_SYNTAX_ERROR("expected ('except'|'كچوالي'|'kecuali') or ('finally'|'اخيرڽ'|'akhirnya') block") }
 invalid_except_stmt:
-    | ('except'|'kecuali'|'كچوالي') a=expression ',' expressions [('as'|'sebagai'|'سباڬاي') NAME ] ':' {
+    | ('except'|'كچوالي'|'kecuali') a=expression ',' expressions [('as'|'سباڬاي'|'sebagai') NAME ] ':' {
         RAISE_SYNTAX_ERROR_STARTING_FROM(a, "multiple exception types must be parenthesized") }
-    | a=('except'|'kecuali'|'كچوالي') expression [('as'|'sebagai'|'سباڬاي') NAME ] NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
-    | a=('except'|'kecuali'|'كچوالي') NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
+    | a='except' expression [('as'|'سباڬاي'|'sebagai') NAME ] NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
+    | a='except' NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
 invalid_finally_stmt:
-    | a=('finally'|'akhirnya'|'اخيرڽ') ':' NEWLINE !INDENT {
-        RAISE_INDENTATION_ERROR("expected an indented block after ('finally'|'akhirnya'|'اخيرڽ') statement on line %d", a->lineno) }
+    | a='finally' ':' NEWLINE !INDENT {
+        RAISE_INDENTATION_ERROR("expected an indented block after ('finally'|'اخيرڽ'|'akhirnya') statement on line %d", a->lineno) }
 invalid_except_stmt_indent:
-    | a=('except'|'kecuali'|'كچوالي') expression [('as'|'sebagai'|'سباڬاي') NAME ] ':' NEWLINE !INDENT {
-        RAISE_INDENTATION_ERROR("expected an indented block after ('except'|'kecuali'|'كچوالي') statement on line %d", a->lineno) }
-    | a=('except'|'kecuali'|'كچوالي') ':' NEWLINE !INDENT { RAISE_SYNTAX_ERROR("expected an indented block after except statement on line %d", a->lineno) }
+    | a='except' expression [('as'|'سباڬاي'|'sebagai') NAME ] ':' NEWLINE !INDENT {
+        RAISE_INDENTATION_ERROR("expected an indented block after ('except'|'كچوالي'|'kecuali') statement on line %d", a->lineno) }
+    | a='except' ':' NEWLINE !INDENT { RAISE_SYNTAX_ERROR("expected an indented block after except statement on line %d", a->lineno) }
 invalid_match_stmt:
     | "match" subject_expr !':' { CHECK_VERSION(void*, 10, "Pattern matching is", RAISE_SYNTAX_ERROR("expected ':'") ) }
     | a="match" subject=subject_expr ':' NEWLINE !INDENT {
@@ -1206,8 +1206,8 @@ invalid_case_block:
     | a="case" patterns guard? ':' NEWLINE !INDENT {
         RAISE_INDENTATION_ERROR("expected an indented block after 'case' statement on line %d", a->lineno) }
 invalid_as_pattern:
-    | or_pattern ('as'|'sebagai'|'سباڬاي') a="_" { RAISE_SYNTAX_ERROR_KNOWN_LOCATION(a, "cannot use '_' as a target") }
-    | or_pattern ('as'|'sebagai'|'سباڬاي') !NAME a=expression { RAISE_SYNTAX_ERROR_KNOWN_LOCATION(a, "invalid pattern target") }
+    | or_pattern ('as'|'سباڬاي'|'sebagai') a="_" { RAISE_SYNTAX_ERROR_KNOWN_LOCATION(a, "cannot use '_' as a target") }
+    | or_pattern ('as'|'سباڬاي'|'sebagai') !NAME a=expression { RAISE_SYNTAX_ERROR_KNOWN_LOCATION(a, "invalid pattern target") }
 invalid_class_pattern:
     | name_or_attr '(' a=invalid_class_argument_pattern  { RAISE_SYNTAX_ERROR_KNOWN_RANGE(
         PyPegen_first_item(a, pattern_ty),
@@ -1216,28 +1216,28 @@ invalid_class_pattern:
 invalid_class_argument_pattern[asdl_pattern_seq*]:
     | [positional_patterns ','] keyword_patterns ',' a=positional_patterns { a }
 invalid_if_stmt:
-    | ('if'|'jika'|'جک') named_expression NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
-    | a=('if'|'jika'|'جک') a=named_expression ':' NEWLINE !INDENT {
-        RAISE_INDENTATION_ERROR("expected an indented block after ('if'|'jika'|'جک') statement on line %d", a->lineno) }
+    | ('if'|'جک'|'jika') named_expression NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
+    | a='if' a=named_expression ':' NEWLINE !INDENT {
+        RAISE_INDENTATION_ERROR("expected an indented block after ('if'|'جک'|'jika') statement on line %d", a->lineno) }
 invalid_elif_stmt:
     | 'elif' named_expression NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
     | a='elif' named_expression ':' NEWLINE !INDENT {
         RAISE_INDENTATION_ERROR("expected an indented block after 'elif' statement on line %d", a->lineno) }
 invalid_else_stmt:
-    | a=('else'|'lain'|'لاءين') ':' NEWLINE !INDENT {
-        RAISE_INDENTATION_ERROR("expected an indented block after ('else'|'lain'|'لاءين') statement on line %d", a->lineno) }
+    | a='else' ':' NEWLINE !INDENT {
+        RAISE_INDENTATION_ERROR("expected an indented block after ('else'|'لاءين'|'lain') statement on line %d", a->lineno) }
 invalid_while_stmt:
-    | ('while'|'ketika'|'کتيک') named_expression NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
-    | a=('while'|'ketika'|'کتيک') named_expression ':' NEWLINE !INDENT {
-        RAISE_INDENTATION_ERROR("expected an indented block after ('while'|'ketika'|'کتيک') statement on line %d", a->lineno) }
+    | ('while'|'کتيک'|'ketika') named_expression NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
+    | a='while' named_expression ':' NEWLINE !INDENT {
+        RAISE_INDENTATION_ERROR("expected an indented block after ('while'|'کتيک'|'ketika') statement on line %d", a->lineno) }
 invalid_for_stmt:
-    | [ASYNC] a=('for'|'untuk'|'ونتوق') star_targets ('in'|'dalam'|'دالم') star_expressions ':' NEWLINE !INDENT {
-        RAISE_INDENTATION_ERROR("expected an indented block after ('for'|'untuk'|'ونتوق') statement on line %d", a->lineno) }
+    | [ASYNC] a='for' star_targets ('in'|'دالم'|'dalam') star_expressions ':' NEWLINE !INDENT {
+        RAISE_INDENTATION_ERROR("expected an indented block after ('for'|'ونتوق'|'untuk') statement on line %d", a->lineno) }
 invalid_def_raw:
-    | [ASYNC] a=('def'|'fungsi'|'فوڠسي') NAME '(' [params] ')' ['->' expression] ':' NEWLINE !INDENT {
+    | [ASYNC] a='def' NAME '(' [params] ')' ['->' expression] ':' NEWLINE !INDENT {
         RAISE_INDENTATION_ERROR("expected an indented block after function definition on line %d", a->lineno) }
 invalid_class_def_raw:
-    | a=('class'|'kelas'|'كلس') NAME ['('[arguments] ')'] ':' NEWLINE !INDENT {
+    | a='class' NAME ['('[arguments] ')'] ':' NEWLINE !INDENT {
         RAISE_INDENTATION_ERROR("expected an indented block after class definition on line %d", a->lineno) }
 
 invalid_double_starred_kvpairs:
