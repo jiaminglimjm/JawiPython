@@ -10,7 +10,7 @@ Untuk Unix, Linux, BSD, macOS, dan Cygwin::
 
     ./configure         # hanya untuk pertama kali
     make regen-pegen    # kemaskini parser
-    make                # cipta fail binary
+    make                # cipta fail binari
 
 Ini akan membina fail binari Python dalam Bahasa Melayu sebagai ``python``. Ini TIDAK akan memasang python kepada sistem anda, hanya mencipta sebuah fail binari yang boleh dieksekusi.
 
@@ -20,48 +20,48 @@ Untuk mengetahui lebih lanjut tentang pengkompilan untuk MacOS dan Windows: Perg
 Terjemahan kata-kata kunci
 --------------------------
 
-======== ====================
-Inggeris Bahasa Melayu (Rumi)
-======== ====================
-False    Palsu
-None     Tiada
-True     Benar
-and      dan
-as       sebagai
-assert   =
-async    =
-await    =
-break    putus
-class    kelas
-continue lanjut
-def      fungsi
-del      hapus
-elif     =
-else     lain
-except   kecuali
-finally  akhirnya
-for      untuk
-from     dari
-global   =
-if       jika
-import   =
-in       dalam
-is       ialah
-lambda   =
-nonlocal =
-not      bukan
-or       atau
-pass     =
-raise    =
-return   kembali
-try      cuba
-while    ketika
-with     dengan
-yield    =
+======== ==================== ====================
+Inggeris Bahasa Melayu (Rumi) Bahasa Melayu (Jawi)
+======== ==================== ====================
+False    Palsu                ڤلسو
+None     Tiada                تياد
+True     Benar                بنر
+and      dan                  دان
+as       sebagai              سباڬاي
+assert   =                    =
+async    =                    =
+await    =                    =
+break    putus                ڤوتوس
+class    kelas                كلس
+continue lanjut               لنجوت
+def      fungsi               فوڠسي
+del      hapus                هاڤوس
+elif     =                    =
+else     lain                 لاءين
+except   kecuali              كچوالي
+finally  akhirnya             اخيرڽ
+for      untuk                ونتوق
+from     dari                 دري
+global   =                    =
+if       jika                 جک
+import   =                    =
+in       dalam                دالم
+is       ialah                اياله
+lambda   =                    =
+nonlocal =                    =
+not      bukan                بوكن
+or       atau                 اتاو
+pass     =                    =
+raise    =                    =
+return   kembali              كمبالي
+try      cuba                 چوبا
+while    ketika               کتيک
+with     dengan               دڠن
+yield    =                    =
 ======== ====================
 
-Fungsi piawai
--------------
+Terjemahan fungsi piawai
+------------------------
 
 ========================= ===========================
         Inggeris              Bahasa Melayu (Rumi)
@@ -210,13 +210,13 @@ round                     bundar
 set                       =
 setattr                   =
 slice                     =
-sorted                    menyusun
+sorted                    susun
 staticmethod              =
 str                       rentetan
-sum                       menambah
+sum                       tambah
 super                     =
 tuple                     =
-type                      =
+type                      tipe
 vars                      =
 zip                       =
 ========================= ===========================
