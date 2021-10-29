@@ -3,26 +3,26 @@ Ini ialah JawiPython daripada CPython versi 3.11.0 alfa 1
 
 .. contents::
 
-Cara Kompil (Build Instructions)
---------------------------------
+Cara Kompil & Guna
+------------------
 
 Untuk Unix, Linux, BSD, macOS, dan Cygwin::
 
-    ./configure
-    make regen-pegen
-    make
+    ./configure         # hanya untuk pertama kali
+    make regen-pegen    # kemaskini parser
+    make                # cipta fail binary
 
-Ini akan membina fail binari Python dalam Bahasa Melayu sebagai ``python3``. Ini TIDAK akan memasang python kepada sistem anda, hanya mencipta sebuah fail binari yang boleh dieksekusi.
+Ini akan membina fail binari Python dalam Bahasa Melayu sebagai ``python``. Ini TIDAK akan memasang python kepada sistem anda, hanya mencipta sebuah fail binari yang boleh dieksekusi.
 
 Untuk mengetahui lebih lanjut tentang pengkompilan untuk MacOS dan Windows: Pergi ke ...
 
 
-Terjemahan Kata Kunci
----------------------
+Terjemahan kata-kata kunci
+--------------------------
 
-======== ===========================
+======== ====================
 Inggeris Bahasa Melayu (Rumi)
-======== ===========================
+======== ====================
 False    Palsu
 None     Tiada
 True     Benar
@@ -58,10 +58,10 @@ try      cuba
 while    ketika
 with     dengan
 yield    =
-======== ===========================
+======== ====================
 
-Fungsi piawai (Builtin Functions)
----------------------------------
+Fungsi piawai
+-------------
 
 ========================= ===========================
         Inggeris              Bahasa Melayu (Rumi)
@@ -220,26 +220,3 @@ type                      =
 vars                      =
 zip                       =
 ========================= ===========================
-
-
-Copyright and License Information
----------------------------------
-
-Copyright (c) 2001-2021 Python Software Foundation.  All rights reserved.
-
-Copyright (c) 2000 BeOpen.com.  All rights reserved.
-
-Copyright (c) 1995-2001 Corporation for National Research Initiatives.  All
-rights reserved.
-
-Copyright (c) 1991-1995 Stichting Mathematisch Centrum.  All rights reserved.
-
-See the `LICENSE <https://github.com/python/cpython/blob/main/LICENSE>`_ for
-information on the history of this software, terms & conditions for usage, and a
-DISCLAIMER OF ALL WARRANTIES.
-
-This Python distribution contains *no* GNU General Public License (GPL) code,
-so it may be used in proprietary projects.  There are interfaces to some GNU
-code but these are entirely optional.
-
-All trademarks referenced herein are property of their respective holders.
