@@ -1,65 +1,181 @@
-This is Python version 3.11.0 alpha 1
+Ini ialah JawiPython daripada CPython versi 3.11.0 alfa 1
 =====================================
 
-.. image:: https://travis-ci.com/python/cpython.svg?branch=main
-   :alt: CPython build status on Travis CI
-   :target: https://travis-ci.com/python/cpython
+========================= ===========================
+        Inggeris                 Bahasa Melayu
+========================= ===========================
+ArithmeticError           =
+AssertionError            =
+AttributeError            =
+BaseException             =
+BlockingIOError           =
+BrokenPipeError           =
+BufferError               =
+BytesWarning              =
+ChildProcessError         =
+ConnectionAbortedError    =
+ConnectionError           =
+ConnectionRefusedError    =
+ConnectionResetError      =
+DeprecationWarning        =
+EOFError                  =
+Ellipsis                  =
+EnvironmentError          =
+Exception                 =
+False                     Palsu
+FileExistsError           =
+FileNotFoundError         =
+FloatingPointError        =
+FutureWarning             =
+GeneratorExit             =
+IOError                   =
+ImportError               =
+ImportWarning             =
+IndentationError          =
+IndexError                =
+InterruptedError          =
+IsADirectoryError         =
+KeyError                  =
+KeyboardInterrupt         =
+LookupError               =
+MemoryError               =
+ModuleNotFoundError       =
+NameError                 =
+None                      Tiada
+NotADirectoryError        =
+NotImplemented            =
+NotImplementedError       =
+OSError                   =
+OverflowError             =
+PendingDeprecationWarning =
+PermissionError           =
+ProcessLookupError        =
+RecursionError            =
+ReferenceError            =
+ResourceWarning           =
+RuntimeError              =
+RuntimeWarning            =
+StopAsyncIteration        =
+StopIteration             =
+SyntaxError               =
+SyntaxWarning             =
+SystemError               =
+SystemExit                =
+TabError                  =
+TimeoutError              =
+True                      Benar
+TypeError                 =
+UnboundLocalError         =
+UnicodeDecodeError        =
+UnicodeEncodeError        =
+UnicodeError              =
+UnicodeTranslateError     =
+UnicodeWarning            =
+UserWarning               =
+ValueError                =
+Warning                   =
+ZeroDivisionError         =
+_                         =
+__build_class__           =
+__debug__                 =
+__doc__                   =
+__import__                =
+__loader__                =
+__name__                  __nama__
+__package__               =
+__spec__                  =
+abs                       =
+all                       semua
+any                       =
+ascii                     =
+bin                       =
+bool                      =
+breakpoint                =
+bytearray                 =
+bytes                     =
+callable                  =
+chr                       =
+classmethod               =
+compile                   =
+complex                   =
+copyright                 =
+credits                   =
+delattr                   =
+dict                      kamus
+dir                       =
+divmod                    =
+enumerate                 =
+eval                      =
+exec                      =
+exit                      =
+filter                    =
+float                     =
+format                    =
+frozenset                 =
+getattr                   =
+globals                   =
+hasattr                   =
+hash                      =
+help                      =
+hex                       =
+id                        =
+input                     =
+int                       =
+isinstance                =
+issubclass                =
+iter                      =
+len                       =
+license                   =
+list                      =
+locals                    =
+map                       =
+max                       =
+memoryview                =
+min                       =
+next                      =
+object                    =
+oct                       =
+open                      =
+ord                       =
+pow                       =
+print                     =
+property                  =
+quit                      =
+range                     =
+repr                      =
+reversed                  terbalik
+round                     bundar
+set                       =
+setattr                   =
+slice                     =
+sorted                    menyusun
+staticmethod              =
+str                       rentetan
+sum                       menambah
+super                     =
+tuple                     =
+type                      =
+vars                      =
+zip                       =
+========================= ===========================
 
-.. image:: https://github.com/python/cpython/workflows/Tests/badge.svg
-   :alt: CPython build status on GitHub Actions
-   :target: https://github.com/python/cpython/actions
 
-.. image:: https://dev.azure.com/python/cpython/_apis/build/status/Azure%20Pipelines%20CI?branchName=main
-   :alt: CPython build status on Azure DevOps
-   :target: https://dev.azure.com/python/cpython/_build/latest?definitionId=4&branchName=main
-
-.. image:: https://img.shields.io/badge/discourse-join_chat-brightgreen.svg
-   :alt: Python Discourse chat
-   :target: https://discuss.python.org/
-
-
-Copyright (c) 2001-2021 Python Software Foundation.  All rights reserved.
-
-See the end of this file for further copyright and license information.
-
-.. contents::
-
-General Information
--------------------
-
-- Website: https://www.python.org
-- Source code: https://github.com/python/cpython
-- Issue tracker: https://bugs.python.org
-- Documentation: https://docs.python.org
-- Developer's Guide: https://devguide.python.org/
-
-Contributing to CPython
------------------------
-
-For more complete instructions on contributing to CPython development,
-see the `Developer Guide`_.
+ `Developer Guide`_.
 
 .. _Developer Guide: https://devguide.python.org/
-
-Using Python
-------------
-
-Installable Python kits, and information about using Python, are available at
-`python.org`_.
-
-.. _python.org: https://www.python.org/
 
 Build Instructions
 ------------------
 
-On Unix, Linux, BSD, macOS, and Cygwin::
+Untuk Unix, Linux, BSD, macOS, dan Cygwin::
 
     ./configure
+    make regen-pegen
     make
-    make test
-    sudo make install
+    mv python3 jawipython3
+    sudo chmod +x python3
 
-This will install Python as ``python3``.
+Ini akan membina fail binari Python dalam Bahasa Melayu sebagai ``python3``.
 
 You can pass many options to the configure script; run ``./configure --help``
 to find out more.  On macOS case-insensitive file systems and on Cygwin,
