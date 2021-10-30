@@ -20,9 +20,9 @@ Untuk mengetahui lebih lanjut tentang pengkompilan untuk MacOS dan Windows, sila
 
 `Aturcara contoh`_
 
-.. image:: https://github.com/jiaminglimjm/JawiPython/ProjekEulerMasalah1.png
+.. image:: https://raw.githubusercontent.com/jiaminglimjm/JawiPython/master/CONTOH_CONTOH/ProjekEulerMasalah1.png
 
-.. _Aturcara contoh: https://github.com/jiaminglimjm/JawiPython/blob/master/CONTOH_CONTOH/Projek Euler 1 - Angka kandungan 3 dan 5.ms.py
+.. _Aturcara contoh: https://github.com/jiaminglimjm/JawiPython/blob/master/CONTOH_CONTOH/ProjekEuler1-AngkaKandungan3dan5.ms.py
 
 Untuk "syntax highlighting", saya buat sendiri sebenarnya dengan penyunting teks `xed`. Tapi masih belajar cara untuk membuatnya dalam vscode.
 
