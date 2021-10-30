@@ -14,7 +14,16 @@ Untuk Unix, Linux, BSD, macOS, dan Cygwin::
 
 Ini akan membina fail binari Python dalam Bahasa Melayu sebagai ``python``. Ini TIDAK akan memasang python kepada sistem anda, hanya mencipta sebuah fail binari yang boleh dieksekusi.
 
-Untuk mengetahui lebih lanjut tentang pengkompilan untuk MacOS dan Windows: Pergi ke ...
+Untuk mengetahui lebih lanjut tentang pengkompilan untuk MacOS dan Windows, sila lihat `github.com/python/cpython#build-instructions`_ Saya bukan pakar pengkompilan CPython, tetapi sudah pernah cuba kompil untuk Windows dan berhasil selepas mengikut arahan2 dalam pautan itu.
+
+.. _github.com/python/cpython#build-instructions: https://github.com/python/cpython#build-instructions
+
+`Aturcara contoh`_
+.. image:: https://github.com/jiaminglimjm/JawiPython/ProjekEulerMasalah1.png
+.. _Aturcara contoh: https://github.com/jiaminglimjm/JawiPython/blob/master/CONTOH_CONTOH/Projek Euler 1 - Angka kandungan 3 dan 5.ms.py
+
+Untuk "syntax highlighting", saya buat sendiri sebenarnya dengan penyunting teks `xed`. Tapi masih belajar cara untuk membuatnya dalam vscode.
+
 
 
 Terjemahan kata-kata kunci
