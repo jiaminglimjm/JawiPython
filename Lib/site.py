@@ -607,11 +607,14 @@ def main():
     setquit()
     setcopyright()
     sethelper()
+
     if not sys.flags.isolated:
         enablerlcompleter()
     execsitecustomize()
     if ENABLE_USER_SITE:
         execusercustomize()
+
+    import terjemahan  # semua terjemahan builtins berada di dalam fail ini
 
 # Prevent extending of sys.path when python was started with -S and
 # site is imported later.
