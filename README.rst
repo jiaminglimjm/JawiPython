@@ -12,21 +12,19 @@ Untuk Unix, Linux, BSD, macOS, dan Cygwin::
     make regen-pegen    # kemaskini parser
     make                # cipta fail binari
 
-Ini akan membina fail binari Python dalam Bahasa Melayu sebagai ``python``. Ini TIDAK akan memasang python kepada sistem anda, hanya mencipta sebuah fail binari yang boleh dieksekusi.
+Ini akan membina fail binari ``python``. Ini TIDAK akan memasang python kepada sistem anda. Ia hanya mencipta sebuah fail binari yang boleh mengeksekusi fail python yang ditulis dalam Bahasa Inggeris, Bahasa Melayu (Rumi) atau Jawi.
 
-Untuk mengetahui lebih lanjut tentang pengkompilan untuk MacOS dan Windows, sila lihat `github.com/python/cpython#build-instructions`_ Saya bukan pakar pengkompilan CPython, tetapi sudah pernah cuba kompil untuk Windows dan berhasil selepas mengikut arahan2 dalam pautan itu.
+Untuk mengetahui lebih lanjut tentang pengkompilan untuk MacOS dan Windows, sila lihat `github.com/python/cpython#build-instructions`_. Saya pernah cuba kompil untuk Windows dengan mengikut arahan2 dalam pautan itu, tapi itu untuk versi 3.9 lah, entah kalau sudah berubah, tapi saya rasa stepsnya masih sama...
 
 .. _github.com/python/cpython#build-instructions: https://github.com/python/cpython#build-instructions
 
-`Aturcara contoh`_
-
 .. image:: https://raw.githubusercontent.com/jiaminglimjm/JawiPython/master/CONTOH_CONTOH/ProjekEulerMasalah1.png
 
-.. _Aturcara contoh: https://github.com/jiaminglimjm/JawiPython/blob/master/CONTOH_CONTOH/ProjekEuler1-AngkaKandungan3dan5.ms.py
+`Fail contoh di sini`_
 
-Untuk "syntax highlighting", saya buat sendiri sebenarnya dengan penyunting teks `xed`. Tapi masih belajar cara untuk membuatnya dalam vscode.
+.. _Fail contoh di sini: https://github.com/jiaminglimjm/JawiPython/blob/master/CONTOH_CONTOH/ProjekEuler001-AngkaKandungan3dan5.ms.py
 
-
+Kalau ada kesilapan di bawah, sila memberitahu saya dekat "github issues" atau emel. Saya masih belajar bahasa melayu, dan projek ini adalah salah satu cara saya melalukannya.
 
 Terjemahan kata-kata kunci
 --------------------------
