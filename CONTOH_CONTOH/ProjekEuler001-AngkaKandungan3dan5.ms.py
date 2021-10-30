@@ -1,12 +1,12 @@
 # https://projecteuler.net/problem=1
-جواڤن = 0
+jawapan = 0
 
-ونتوق ن دالم جولت(1000):
-    جک ن % 3 == 0:
-        جواڤن += ن
-    جک ن % 5 == 0:
-        جواڤن += ن
-    جک ن % 15 == 0:
-        جواڤن -= ن
+untuk n dalam julat(1000):
+    jika n % 3 == 0:
+        jawapan += n
+    jika n % 5 == 0:
+        jawapan += n
+    jika n % 15 == 0:
+        jawapan -= n
 
-چيتق(جواڤن)
+cetak(jawapan)
