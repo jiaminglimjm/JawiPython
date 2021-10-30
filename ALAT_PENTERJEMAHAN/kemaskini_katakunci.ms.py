@@ -19,7 +19,7 @@ finally  akhirnya             اخيرڽ
 for      untuk                ونتوق
 from     dari                 دري
 global   =                    =
-if       jika                 جک
+if       jika                 جك
 import   =                    =
 in       dalam                دالم
 is       ialah                اياله
@@ -31,7 +31,7 @@ pass     =                    =
 raise    =                    =
 return   kembali              كمبالي
 try      cuba                 چوبا
-while    ketika               کتيک
+while    ketika               كتيك
 with     dengan               دڠن
 yield    =                    ='''
 

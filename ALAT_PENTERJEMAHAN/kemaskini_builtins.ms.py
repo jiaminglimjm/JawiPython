@@ -94,15 +94,15 @@ classmethod               =                           =
 compile                   =                           =
 complex                   =                           =
 copyright                 hakcipta                    حقچيڤتا
-credits                   penghargaan                 ڤڠهرݢاءن
+credits                   penghargaan                 ڤڠهرڬاءن
 delattr                   =                           =
 dict                      kamus                       قاموس
 dir                       =                           =
 divmod                    =                           =
-enumerate                 mengangkakan                مڠڠکاکن
+enumerate                 mengangkakan                مڠڠكاكن
 eval                      =                           =
 exec                      jalan                       جالن
-exit                      keluar                      کلوار
+exit                      keluar                      كلوار
 filter                    =                           =
 float                     =                           =
 format                    =                           =
@@ -115,7 +115,7 @@ help                      bantu                       بنتو
 hex                       =                           =
 id                        =                           =
 input                     =                           =
-int                       =                           =
+int                       =                           اينتيڬر
 isinstance                =                           =
 issubclass                =                           =
 iter                      =                           =
@@ -130,7 +130,7 @@ min                       =                           =
 next                      =                           =
 object                    =                           =
 oct                       =                           =
-open                      buka                        بوک
+open                      buka                        بوك
 ord                       =                           =
 pow                       =                           =
 print                     cetak                       چيتق

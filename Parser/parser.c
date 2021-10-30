@@ -32,7 +32,7 @@ static KeywordToken *reserved_keywords[] = {
         {"from", 671},
         {"dari", 673},
         {"pass", 508},
-        {"جک", 814},
+        {"جك", 814},
         {"jika", 815},
         {"with", 776},
         {"cuba", 783},
@@ -92,7 +92,7 @@ static KeywordToken *reserved_keywords[] = {
         {"continue", 517},
         {"nonlocal", 552},
         {"چوبا", 782},
-        {"کتيک", 821},
+        {"كتيك", 821},
         {"دالم", 826},
         {"akhirnya", 789},
         {"تياد", 746},
@@ -2082,12 +2082,12 @@ simple_stmt_rule(Parser *p)
 
 // compound_stmt:
 //     | &(('def' | 'فوڠسي' | 'fungsi') | '@' | ASYNC) function_def
-//     | &('if' | 'جک' | 'jika') if_stmt
+//     | &('if' | 'جك' | 'jika') if_stmt
 //     | &(('class' | 'كلس' | 'kelas') | '@') class_def
 //     | &(('with' | 'دڠن' | 'dengan') | ASYNC) with_stmt
 //     | &(('for' | 'ونتوق' | 'untuk') | ASYNC) for_stmt
 //     | &('try' | 'چوبا' | 'cuba') try_stmt
-//     | &('while' | 'کتيک' | 'ketika') while_stmt
+//     | &('while' | 'كتيك' | 'ketika') while_stmt
 //     | match_stmt
 static stmt_ty
 compound_stmt_rule(Parser *p)
@@ -2120,12 +2120,12 @@ compound_stmt_rule(Parser *p)
         D(fprintf(stderr, "%*c%s compound_stmt[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "&(('def' | 'فوڠسي' | 'fungsi') | '@' | ASYNC) function_def"));
     }
-    { // &('if' | 'جک' | 'jika') if_stmt
+    { // &('if' | 'جك' | 'jika') if_stmt
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> compound_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "&('if' | 'جک' | 'jika') if_stmt"));
+        D(fprintf(stderr, "%*c> compound_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "&('if' | 'جك' | 'jika') if_stmt"));
         stmt_ty if_stmt_var;
         if (
             _PyPegen_lookahead(1, _tmp_12_rule, p)
@@ -2133,13 +2133,13 @@ compound_stmt_rule(Parser *p)
             (if_stmt_var = if_stmt_rule(p))  // if_stmt
         )
         {
-            D(fprintf(stderr, "%*c+ compound_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "&('if' | 'جک' | 'jika') if_stmt"));
+            D(fprintf(stderr, "%*c+ compound_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "&('if' | 'جك' | 'jika') if_stmt"));
             _res = if_stmt_var;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s compound_stmt[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "&('if' | 'جک' | 'jika') if_stmt"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "&('if' | 'جك' | 'jika') if_stmt"));
     }
     { // &(('class' | 'كلس' | 'kelas') | '@') class_def
         if (p->error_indicator) {
@@ -2225,12 +2225,12 @@ compound_stmt_rule(Parser *p)
         D(fprintf(stderr, "%*c%s compound_stmt[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "&('try' | 'چوبا' | 'cuba') try_stmt"));
     }
-    { // &('while' | 'کتيک' | 'ketika') while_stmt
+    { // &('while' | 'كتيك' | 'ketika') while_stmt
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> compound_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "&('while' | 'کتيک' | 'ketika') while_stmt"));
+        D(fprintf(stderr, "%*c> compound_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "&('while' | 'كتيك' | 'ketika') while_stmt"));
         stmt_ty while_stmt_var;
         if (
             _PyPegen_lookahead(1, _tmp_17_rule, p)
@@ -2238,13 +2238,13 @@ compound_stmt_rule(Parser *p)
             (while_stmt_var = while_stmt_rule(p))  // while_stmt
         )
         {
-            D(fprintf(stderr, "%*c+ compound_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "&('while' | 'کتيک' | 'ketika') while_stmt"));
+            D(fprintf(stderr, "%*c+ compound_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "&('while' | 'كتيك' | 'ketika') while_stmt"));
             _res = while_stmt_var;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s compound_stmt[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "&('while' | 'کتيک' | 'ketika') while_stmt"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "&('while' | 'كتيك' | 'ketika') while_stmt"));
     }
     { // match_stmt
         if (p->error_indicator) {
@@ -5521,8 +5521,8 @@ default_rule(Parser *p)
 
 // if_stmt:
 //     | invalid_if_stmt
-//     | ('if' | 'جک' | 'jika') named_expression ':' block elif_stmt
-//     | ('if' | 'جک' | 'jika') named_expression ':' block else_block?
+//     | ('if' | 'جك' | 'jika') named_expression ':' block elif_stmt
+//     | ('if' | 'جك' | 'jika') named_expression ':' block else_block?
 static stmt_ty
 if_stmt_rule(Parser *p)
 {
@@ -5561,19 +5561,19 @@ if_stmt_rule(Parser *p)
         D(fprintf(stderr, "%*c%s if_stmt[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "invalid_if_stmt"));
     }
-    { // ('if' | 'جک' | 'jika') named_expression ':' block elif_stmt
+    { // ('if' | 'جك' | 'jika') named_expression ':' block elif_stmt
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> if_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('if' | 'جک' | 'jika') named_expression ':' block elif_stmt"));
+        D(fprintf(stderr, "%*c> if_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('if' | 'جك' | 'jika') named_expression ':' block elif_stmt"));
         Token * _literal;
         void *_tmp_64_var;
         expr_ty a;
         asdl_stmt_seq* b;
         stmt_ty c;
         if (
-            (_tmp_64_var = _tmp_64_rule(p))  // 'if' | 'جک' | 'jika'
+            (_tmp_64_var = _tmp_64_rule(p))  // 'if' | 'جك' | 'jika'
             &&
             (a = named_expression_rule(p))  // named_expression
             &&
@@ -5584,7 +5584,7 @@ if_stmt_rule(Parser *p)
             (c = elif_stmt_rule(p))  // elif_stmt
         )
         {
-            D(fprintf(stderr, "%*c+ if_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('if' | 'جک' | 'jika') named_expression ':' block elif_stmt"));
+            D(fprintf(stderr, "%*c+ if_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('if' | 'جك' | 'jika') named_expression ':' block elif_stmt"));
             Token *_token = _PyPegen_get_last_nonnwhitespace_token(p);
             if (_token == NULL) {
                 D(p->level--);
@@ -5604,21 +5604,21 @@ if_stmt_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s if_stmt[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('if' | 'جک' | 'jika') named_expression ':' block elif_stmt"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('if' | 'جك' | 'jika') named_expression ':' block elif_stmt"));
     }
-    { // ('if' | 'جک' | 'jika') named_expression ':' block else_block?
+    { // ('if' | 'جك' | 'jika') named_expression ':' block else_block?
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> if_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('if' | 'جک' | 'jika') named_expression ':' block else_block?"));
+        D(fprintf(stderr, "%*c> if_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('if' | 'جك' | 'jika') named_expression ':' block else_block?"));
         Token * _literal;
         void *_tmp_65_var;
         expr_ty a;
         asdl_stmt_seq* b;
         void *c;
         if (
-            (_tmp_65_var = _tmp_65_rule(p))  // 'if' | 'جک' | 'jika'
+            (_tmp_65_var = _tmp_65_rule(p))  // 'if' | 'جك' | 'jika'
             &&
             (a = named_expression_rule(p))  // named_expression
             &&
@@ -5629,7 +5629,7 @@ if_stmt_rule(Parser *p)
             (c = else_block_rule(p), !p->error_indicator)  // else_block?
         )
         {
-            D(fprintf(stderr, "%*c+ if_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('if' | 'جک' | 'jika') named_expression ':' block else_block?"));
+            D(fprintf(stderr, "%*c+ if_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('if' | 'جك' | 'jika') named_expression ':' block else_block?"));
             Token *_token = _PyPegen_get_last_nonnwhitespace_token(p);
             if (_token == NULL) {
                 D(p->level--);
@@ -5649,7 +5649,7 @@ if_stmt_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s if_stmt[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('if' | 'جک' | 'jika') named_expression ':' block else_block?"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('if' | 'جك' | 'jika') named_expression ':' block else_block?"));
     }
     _res = NULL;
   done:
@@ -5863,7 +5863,7 @@ else_block_rule(Parser *p)
 
 // while_stmt:
 //     | invalid_while_stmt
-//     | ('while' | 'کتيک' | 'ketika') named_expression ':' block else_block?
+//     | ('while' | 'كتيك' | 'ketika') named_expression ':' block else_block?
 static stmt_ty
 while_stmt_rule(Parser *p)
 {
@@ -5902,19 +5902,19 @@ while_stmt_rule(Parser *p)
         D(fprintf(stderr, "%*c%s while_stmt[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "invalid_while_stmt"));
     }
-    { // ('while' | 'کتيک' | 'ketika') named_expression ':' block else_block?
+    { // ('while' | 'كتيك' | 'ketika') named_expression ':' block else_block?
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> while_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('while' | 'کتيک' | 'ketika') named_expression ':' block else_block?"));
+        D(fprintf(stderr, "%*c> while_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('while' | 'كتيك' | 'ketika') named_expression ':' block else_block?"));
         Token * _literal;
         void *_tmp_67_var;
         expr_ty a;
         asdl_stmt_seq* b;
         void *c;
         if (
-            (_tmp_67_var = _tmp_67_rule(p))  // 'while' | 'کتيک' | 'ketika'
+            (_tmp_67_var = _tmp_67_rule(p))  // 'while' | 'كتيك' | 'ketika'
             &&
             (a = named_expression_rule(p))  // named_expression
             &&
@@ -5925,7 +5925,7 @@ while_stmt_rule(Parser *p)
             (c = else_block_rule(p), !p->error_indicator)  // else_block?
         )
         {
-            D(fprintf(stderr, "%*c+ while_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('while' | 'کتيک' | 'ketika') named_expression ':' block else_block?"));
+            D(fprintf(stderr, "%*c+ while_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('while' | 'كتيك' | 'ketika') named_expression ':' block else_block?"));
             Token *_token = _PyPegen_get_last_nonnwhitespace_token(p);
             if (_token == NULL) {
                 D(p->level--);
@@ -5945,7 +5945,7 @@ while_stmt_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s while_stmt[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('while' | 'کتيک' | 'ketika') named_expression ':' block else_block?"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('while' | 'كتيك' | 'ketika') named_expression ':' block else_block?"));
     }
     _res = NULL;
   done:
@@ -7121,7 +7121,7 @@ case_block_rule(Parser *p)
     return _res;
 }
 
-// guard: ('if' | 'جک' | 'jika') named_expression
+// guard: ('if' | 'جك' | 'jika') named_expression
 static expr_ty
 guard_rule(Parser *p)
 {
@@ -7132,21 +7132,21 @@ guard_rule(Parser *p)
     }
     expr_ty _res = NULL;
     int _mark = p->mark;
-    { // ('if' | 'جک' | 'jika') named_expression
+    { // ('if' | 'جك' | 'jika') named_expression
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> guard[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('if' | 'جک' | 'jika') named_expression"));
+        D(fprintf(stderr, "%*c> guard[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('if' | 'جك' | 'jika') named_expression"));
         void *_tmp_94_var;
         expr_ty guard;
         if (
-            (_tmp_94_var = _tmp_94_rule(p))  // 'if' | 'جک' | 'jika'
+            (_tmp_94_var = _tmp_94_rule(p))  // 'if' | 'جك' | 'jika'
             &&
             (guard = named_expression_rule(p))  // named_expression
         )
         {
-            D(fprintf(stderr, "%*c+ guard[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('if' | 'جک' | 'jika') named_expression"));
+            D(fprintf(stderr, "%*c+ guard[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('if' | 'جك' | 'jika') named_expression"));
             _res = guard;
             if (_res == NULL && PyErr_Occurred()) {
                 p->error_indicator = 1;
@@ -7157,7 +7157,7 @@ guard_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s guard[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('if' | 'جک' | 'jika') named_expression"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('if' | 'جك' | 'jika') named_expression"));
     }
     _res = NULL;
   done:
@@ -9975,7 +9975,7 @@ expressions_rule(Parser *p)
 
 // expression:
 //     | invalid_expression
-//     | disjunction ('if' | 'جک' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression
+//     | disjunction ('if' | 'جك' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression
 //     | disjunction
 //     | lambdef
 static expr_ty
@@ -10020,12 +10020,12 @@ expression_rule(Parser *p)
         D(fprintf(stderr, "%*c%s expression[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "invalid_expression"));
     }
-    { // disjunction ('if' | 'جک' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression
+    { // disjunction ('if' | 'جك' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> expression[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "disjunction ('if' | 'جک' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression"));
+        D(fprintf(stderr, "%*c> expression[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "disjunction ('if' | 'جك' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression"));
         void *_tmp_118_var;
         void *_tmp_119_var;
         expr_ty a;
@@ -10034,7 +10034,7 @@ expression_rule(Parser *p)
         if (
             (a = disjunction_rule(p))  // disjunction
             &&
-            (_tmp_118_var = _tmp_118_rule(p))  // 'if' | 'جک' | 'jika'
+            (_tmp_118_var = _tmp_118_rule(p))  // 'if' | 'جك' | 'jika'
             &&
             (b = disjunction_rule(p))  // disjunction
             &&
@@ -10043,7 +10043,7 @@ expression_rule(Parser *p)
             (c = expression_rule(p))  // expression
         )
         {
-            D(fprintf(stderr, "%*c+ expression[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "disjunction ('if' | 'جک' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression"));
+            D(fprintf(stderr, "%*c+ expression[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "disjunction ('if' | 'جك' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression"));
             Token *_token = _PyPegen_get_last_nonnwhitespace_token(p);
             if (_token == NULL) {
                 D(p->level--);
@@ -10063,7 +10063,7 @@ expression_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s expression[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "disjunction ('if' | 'جک' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "disjunction ('if' | 'جك' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression"));
     }
     { // disjunction
         if (p->error_indicator) {
@@ -15187,8 +15187,8 @@ for_if_clauses_rule(Parser *p)
 }
 
 // for_if_clause:
-//     | ASYNC ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جک' | 'jika') disjunction))*
-//     | ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جک' | 'jika') disjunction))*
+//     | ASYNC ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جك' | 'jika') disjunction))*
+//     | ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جك' | 'jika') disjunction))*
 //     | invalid_for_target
 static comprehension_ty
 for_if_clause_rule(Parser *p)
@@ -15200,12 +15200,12 @@ for_if_clause_rule(Parser *p)
     }
     comprehension_ty _res = NULL;
     int _mark = p->mark;
-    { // ASYNC ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جک' | 'jika') disjunction))*
+    { // ASYNC ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جك' | 'jika') disjunction))*
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> for_if_clause[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "ASYNC ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جک' | 'jika') disjunction))*"));
+        D(fprintf(stderr, "%*c> for_if_clause[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "ASYNC ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جك' | 'jika') disjunction))*"));
         int _cut_var = 0;
         void *_tmp_164_var;
         void *_tmp_165_var;
@@ -15226,10 +15226,10 @@ for_if_clause_rule(Parser *p)
             &&
             (b = disjunction_rule(p))  // disjunction
             &&
-            (c = (asdl_expr_seq*)_loop0_166_rule(p))  // ((('if' | 'جک' | 'jika') disjunction))*
+            (c = (asdl_expr_seq*)_loop0_166_rule(p))  // ((('if' | 'جك' | 'jika') disjunction))*
         )
         {
-            D(fprintf(stderr, "%*c+ for_if_clause[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "ASYNC ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جک' | 'jika') disjunction))*"));
+            D(fprintf(stderr, "%*c+ for_if_clause[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "ASYNC ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جك' | 'jika') disjunction))*"));
             _res = CHECK_VERSION ( comprehension_ty , 6 , "Async comprehensions are" , _PyAST_comprehension ( a , b , c , 1 , p -> arena ) );
             if (_res == NULL && PyErr_Occurred()) {
                 p->error_indicator = 1;
@@ -15240,18 +15240,18 @@ for_if_clause_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s for_if_clause[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "ASYNC ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جک' | 'jika') disjunction))*"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "ASYNC ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جك' | 'jika') disjunction))*"));
         if (_cut_var) {
             D(p->level--);
             return NULL;
         }
     }
-    { // ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جک' | 'jika') disjunction))*
+    { // ('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جك' | 'jika') disjunction))*
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> for_if_clause[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جک' | 'jika') disjunction))*"));
+        D(fprintf(stderr, "%*c> for_if_clause[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جك' | 'jika') disjunction))*"));
         int _cut_var = 0;
         void *_tmp_167_var;
         void *_tmp_168_var;
@@ -15269,10 +15269,10 @@ for_if_clause_rule(Parser *p)
             &&
             (b = disjunction_rule(p))  // disjunction
             &&
-            (c = (asdl_expr_seq*)_loop0_169_rule(p))  // ((('if' | 'جک' | 'jika') disjunction))*
+            (c = (asdl_expr_seq*)_loop0_169_rule(p))  // ((('if' | 'جك' | 'jika') disjunction))*
         )
         {
-            D(fprintf(stderr, "%*c+ for_if_clause[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جک' | 'jika') disjunction))*"));
+            D(fprintf(stderr, "%*c+ for_if_clause[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جك' | 'jika') disjunction))*"));
             _res = _PyAST_comprehension ( a , b , c , 0 , p -> arena );
             if (_res == NULL && PyErr_Occurred()) {
                 p->error_indicator = 1;
@@ -15283,7 +15283,7 @@ for_if_clause_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s for_if_clause[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جک' | 'jika') disjunction))*"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('for' | 'ونتوق' | 'untuk') star_targets ('in' | 'دالم' | 'dalam') ~ disjunction ((('if' | 'جك' | 'jika') disjunction))*"));
         if (_cut_var) {
             D(p->level--);
             return NULL;
@@ -18307,7 +18307,7 @@ invalid_kwarg_rule(Parser *p)
 }
 
 // expression_without_invalid:
-//     | disjunction ('if' | 'جک' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression
+//     | disjunction ('if' | 'جك' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression
 //     | disjunction
 //     | lambdef
 static expr_ty
@@ -18329,12 +18329,12 @@ expression_without_invalid_rule(Parser *p)
     UNUSED(_start_lineno); // Only used by EXTRA macro
     int _start_col_offset = p->tokens[_mark]->col_offset;
     UNUSED(_start_col_offset); // Only used by EXTRA macro
-    { // disjunction ('if' | 'جک' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression
+    { // disjunction ('if' | 'جك' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> expression_without_invalid[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "disjunction ('if' | 'جک' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression"));
+        D(fprintf(stderr, "%*c> expression_without_invalid[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "disjunction ('if' | 'جك' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression"));
         void *_tmp_200_var;
         void *_tmp_201_var;
         expr_ty a;
@@ -18343,7 +18343,7 @@ expression_without_invalid_rule(Parser *p)
         if (
             (a = disjunction_rule(p))  // disjunction
             &&
-            (_tmp_200_var = _tmp_200_rule(p))  // 'if' | 'جک' | 'jika'
+            (_tmp_200_var = _tmp_200_rule(p))  // 'if' | 'جك' | 'jika'
             &&
             (b = disjunction_rule(p))  // disjunction
             &&
@@ -18352,7 +18352,7 @@ expression_without_invalid_rule(Parser *p)
             (c = expression_rule(p))  // expression
         )
         {
-            D(fprintf(stderr, "%*c+ expression_without_invalid[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "disjunction ('if' | 'جک' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression"));
+            D(fprintf(stderr, "%*c+ expression_without_invalid[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "disjunction ('if' | 'جك' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression"));
             Token *_token = _PyPegen_get_last_nonnwhitespace_token(p);
             if (_token == NULL) {
                 D(p->level--);
@@ -18372,7 +18372,7 @@ expression_without_invalid_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s expression_without_invalid[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "disjunction ('if' | 'جک' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "disjunction ('if' | 'جك' | 'jika') disjunction ('else' | 'لاءين' | 'lain') expression"));
     }
     { // disjunction
         if (p->error_indicator) {
@@ -18467,7 +18467,7 @@ invalid_legacy_expression_rule(Parser *p)
 // invalid_expression:
 //     | invalid_legacy_expression
 //     | !(NAME STRING | SOFT_KEYWORD) disjunction expression_without_invalid
-//     | disjunction ('if' | 'جک' | 'jika') disjunction !(('else' | 'لاءين' | 'lain') | ':')
+//     | disjunction ('if' | 'جك' | 'jika') disjunction !(('else' | 'لاءين' | 'lain') | ':')
 static void *
 invalid_expression_rule(Parser *p)
 {
@@ -18526,27 +18526,27 @@ invalid_expression_rule(Parser *p)
         D(fprintf(stderr, "%*c%s invalid_expression[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "!(NAME STRING | SOFT_KEYWORD) disjunction expression_without_invalid"));
     }
-    { // disjunction ('if' | 'جک' | 'jika') disjunction !(('else' | 'لاءين' | 'lain') | ':')
+    { // disjunction ('if' | 'جك' | 'jika') disjunction !(('else' | 'لاءين' | 'lain') | ':')
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> invalid_expression[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "disjunction ('if' | 'جک' | 'jika') disjunction !(('else' | 'لاءين' | 'lain') | ':')"));
+        D(fprintf(stderr, "%*c> invalid_expression[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "disjunction ('if' | 'جك' | 'jika') disjunction !(('else' | 'لاءين' | 'lain') | ':')"));
         void *_tmp_203_var;
         expr_ty a;
         expr_ty b;
         if (
             (a = disjunction_rule(p))  // disjunction
             &&
-            (_tmp_203_var = _tmp_203_rule(p))  // 'if' | 'جک' | 'jika'
+            (_tmp_203_var = _tmp_203_rule(p))  // 'if' | 'جك' | 'jika'
             &&
             (b = disjunction_rule(p))  // disjunction
             &&
             _PyPegen_lookahead(0, _tmp_204_rule, p)
         )
         {
-            D(fprintf(stderr, "%*c+ invalid_expression[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "disjunction ('if' | 'جک' | 'jika') disjunction !(('else' | 'لاءين' | 'lain') | ':')"));
-            _res = RAISE_SYNTAX_ERROR_KNOWN_RANGE ( a , b , "expected ('else'|'لاءين'|'lain') after ('if'|'جک'|'jika') expression" );
+            D(fprintf(stderr, "%*c+ invalid_expression[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "disjunction ('if' | 'جك' | 'jika') disjunction !(('else' | 'لاءين' | 'lain') | ':')"));
+            _res = RAISE_SYNTAX_ERROR_KNOWN_RANGE ( a , b , "expected ('else'|'لاءين'|'lain') after ('if'|'جك'|'jika') expression" );
             if (_res == NULL && PyErr_Occurred()) {
                 p->error_indicator = 1;
                 D(p->level--);
@@ -18556,7 +18556,7 @@ invalid_expression_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s invalid_expression[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "disjunction ('if' | 'جک' | 'jika') disjunction !(('else' | 'لاءين' | 'lain') | ':')"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "disjunction ('if' | 'جك' | 'jika') disjunction !(('else' | 'لاءين' | 'lain') | ':')"));
     }
     _res = NULL;
   done:
@@ -20738,7 +20738,7 @@ invalid_class_argument_pattern_rule(Parser *p)
 }
 
 // invalid_if_stmt:
-//     | ('if' | 'جک' | 'jika') named_expression NEWLINE
+//     | ('if' | 'جك' | 'jika') named_expression NEWLINE
 //     | 'if' named_expression ':' NEWLINE !INDENT
 static void *
 invalid_if_stmt_rule(Parser *p)
@@ -20750,24 +20750,24 @@ invalid_if_stmt_rule(Parser *p)
     }
     void * _res = NULL;
     int _mark = p->mark;
-    { // ('if' | 'جک' | 'jika') named_expression NEWLINE
+    { // ('if' | 'جك' | 'jika') named_expression NEWLINE
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> invalid_if_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('if' | 'جک' | 'jika') named_expression NEWLINE"));
+        D(fprintf(stderr, "%*c> invalid_if_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('if' | 'جك' | 'jika') named_expression NEWLINE"));
         void *_tmp_244_var;
         expr_ty named_expression_var;
         Token * newline_var;
         if (
-            (_tmp_244_var = _tmp_244_rule(p))  // 'if' | 'جک' | 'jika'
+            (_tmp_244_var = _tmp_244_rule(p))  // 'if' | 'جك' | 'jika'
             &&
             (named_expression_var = named_expression_rule(p))  // named_expression
             &&
             (newline_var = _PyPegen_expect_token(p, NEWLINE))  // token='NEWLINE'
         )
         {
-            D(fprintf(stderr, "%*c+ invalid_if_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('if' | 'جک' | 'jika') named_expression NEWLINE"));
+            D(fprintf(stderr, "%*c+ invalid_if_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('if' | 'جك' | 'jika') named_expression NEWLINE"));
             _res = RAISE_SYNTAX_ERROR ( "expected ':'" );
             if (_res == NULL && PyErr_Occurred()) {
                 p->error_indicator = 1;
@@ -20778,7 +20778,7 @@ invalid_if_stmt_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s invalid_if_stmt[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('if' | 'جک' | 'jika') named_expression NEWLINE"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('if' | 'جك' | 'jika') named_expression NEWLINE"));
     }
     { // 'if' named_expression ':' NEWLINE !INDENT
         if (p->error_indicator) {
@@ -20803,7 +20803,7 @@ invalid_if_stmt_rule(Parser *p)
         )
         {
             D(fprintf(stderr, "%*c+ invalid_if_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'if' named_expression ':' NEWLINE !INDENT"));
-            _res = RAISE_INDENTATION_ERROR ( "expected an indented block after ('if'|'جک'|'jika') statement on line %d" , a -> lineno );
+            _res = RAISE_INDENTATION_ERROR ( "expected an indented block after ('if'|'جك'|'jika') statement on line %d" , a -> lineno );
             if (_res == NULL && PyErr_Occurred()) {
                 p->error_indicator = 1;
                 D(p->level--);
@@ -20955,7 +20955,7 @@ invalid_else_stmt_rule(Parser *p)
 }
 
 // invalid_while_stmt:
-//     | ('while' | 'کتيک' | 'ketika') named_expression NEWLINE
+//     | ('while' | 'كتيك' | 'ketika') named_expression NEWLINE
 //     | 'while' named_expression ':' NEWLINE !INDENT
 static void *
 invalid_while_stmt_rule(Parser *p)
@@ -20967,24 +20967,24 @@ invalid_while_stmt_rule(Parser *p)
     }
     void * _res = NULL;
     int _mark = p->mark;
-    { // ('while' | 'کتيک' | 'ketika') named_expression NEWLINE
+    { // ('while' | 'كتيك' | 'ketika') named_expression NEWLINE
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> invalid_while_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('while' | 'کتيک' | 'ketika') named_expression NEWLINE"));
+        D(fprintf(stderr, "%*c> invalid_while_stmt[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('while' | 'كتيك' | 'ketika') named_expression NEWLINE"));
         void *_tmp_245_var;
         expr_ty named_expression_var;
         Token * newline_var;
         if (
-            (_tmp_245_var = _tmp_245_rule(p))  // 'while' | 'کتيک' | 'ketika'
+            (_tmp_245_var = _tmp_245_rule(p))  // 'while' | 'كتيك' | 'ketika'
             &&
             (named_expression_var = named_expression_rule(p))  // named_expression
             &&
             (newline_var = _PyPegen_expect_token(p, NEWLINE))  // token='NEWLINE'
         )
         {
-            D(fprintf(stderr, "%*c+ invalid_while_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('while' | 'کتيک' | 'ketika') named_expression NEWLINE"));
+            D(fprintf(stderr, "%*c+ invalid_while_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('while' | 'كتيك' | 'ketika') named_expression NEWLINE"));
             _res = RAISE_SYNTAX_ERROR ( "expected ':'" );
             if (_res == NULL && PyErr_Occurred()) {
                 p->error_indicator = 1;
@@ -20995,7 +20995,7 @@ invalid_while_stmt_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s invalid_while_stmt[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('while' | 'کتيک' | 'ketika') named_expression NEWLINE"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('while' | 'كتيك' | 'ketika') named_expression NEWLINE"));
     }
     { // 'while' named_expression ':' NEWLINE !INDENT
         if (p->error_indicator) {
@@ -21020,7 +21020,7 @@ invalid_while_stmt_rule(Parser *p)
         )
         {
             D(fprintf(stderr, "%*c+ invalid_while_stmt[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'while' named_expression ':' NEWLINE !INDENT"));
-            _res = RAISE_INDENTATION_ERROR ( "expected an indented block after ('while'|'کتيک'|'ketika') statement on line %d" , a -> lineno );
+            _res = RAISE_INDENTATION_ERROR ( "expected an indented block after ('while'|'كتيك'|'ketika') statement on line %d" , a -> lineno );
             if (_res == NULL && PyErr_Occurred()) {
                 p->error_indicator = 1;
                 D(p->level--);
@@ -22180,7 +22180,7 @@ _tmp_11_rule(Parser *p)
     return _res;
 }
 
-// _tmp_12: 'if' | 'جک' | 'jika'
+// _tmp_12: 'if' | 'جك' | 'jika'
 static void *
 _tmp_12_rule(Parser *p)
 {
@@ -22210,24 +22210,24 @@ _tmp_12_rule(Parser *p)
         D(fprintf(stderr, "%*c%s _tmp_12[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'if'"));
     }
-    { // 'جک'
+    { // 'جك'
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_12[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جک'"));
+        D(fprintf(stderr, "%*c> _tmp_12[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جك'"));
         Token * _keyword;
         if (
-            (_keyword = _PyPegen_expect_token(p, 814))  // token='جک'
+            (_keyword = _PyPegen_expect_token(p, 814))  // token='جك'
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_12[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جک'"));
+            D(fprintf(stderr, "%*c+ _tmp_12[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جك'"));
             _res = _keyword;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_12[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جک'"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جك'"));
     }
     { // 'jika'
         if (p->error_indicator) {
@@ -22493,7 +22493,7 @@ _tmp_16_rule(Parser *p)
     return _res;
 }
 
-// _tmp_17: 'while' | 'کتيک' | 'ketika'
+// _tmp_17: 'while' | 'كتيك' | 'ketika'
 static void *
 _tmp_17_rule(Parser *p)
 {
@@ -22523,24 +22523,24 @@ _tmp_17_rule(Parser *p)
         D(fprintf(stderr, "%*c%s _tmp_17[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'while'"));
     }
-    { // 'کتيک'
+    { // 'كتيك'
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_17[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'کتيک'"));
+        D(fprintf(stderr, "%*c> _tmp_17[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'كتيك'"));
         Token * _keyword;
         if (
-            (_keyword = _PyPegen_expect_token(p, 821))  // token='کتيک'
+            (_keyword = _PyPegen_expect_token(p, 821))  // token='كتيك'
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_17[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'کتيک'"));
+            D(fprintf(stderr, "%*c+ _tmp_17[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'كتيك'"));
             _res = _keyword;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_17[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'کتيک'"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'كتيك'"));
     }
     { // 'ketika'
         if (p->error_indicator) {
@@ -25409,7 +25409,7 @@ _loop1_63_rule(Parser *p)
     return _seq;
 }
 
-// _tmp_64: 'if' | 'جک' | 'jika'
+// _tmp_64: 'if' | 'جك' | 'jika'
 static void *
 _tmp_64_rule(Parser *p)
 {
@@ -25439,24 +25439,24 @@ _tmp_64_rule(Parser *p)
         D(fprintf(stderr, "%*c%s _tmp_64[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'if'"));
     }
-    { // 'جک'
+    { // 'جك'
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_64[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جک'"));
+        D(fprintf(stderr, "%*c> _tmp_64[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جك'"));
         Token * _keyword;
         if (
-            (_keyword = _PyPegen_expect_token(p, 814))  // token='جک'
+            (_keyword = _PyPegen_expect_token(p, 814))  // token='جك'
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_64[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جک'"));
+            D(fprintf(stderr, "%*c+ _tmp_64[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جك'"));
             _res = _keyword;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_64[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جک'"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جك'"));
     }
     { // 'jika'
         if (p->error_indicator) {
@@ -25483,7 +25483,7 @@ _tmp_64_rule(Parser *p)
     return _res;
 }
 
-// _tmp_65: 'if' | 'جک' | 'jika'
+// _tmp_65: 'if' | 'جك' | 'jika'
 static void *
 _tmp_65_rule(Parser *p)
 {
@@ -25513,24 +25513,24 @@ _tmp_65_rule(Parser *p)
         D(fprintf(stderr, "%*c%s _tmp_65[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'if'"));
     }
-    { // 'جک'
+    { // 'جك'
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_65[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جک'"));
+        D(fprintf(stderr, "%*c> _tmp_65[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جك'"));
         Token * _keyword;
         if (
-            (_keyword = _PyPegen_expect_token(p, 814))  // token='جک'
+            (_keyword = _PyPegen_expect_token(p, 814))  // token='جك'
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_65[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جک'"));
+            D(fprintf(stderr, "%*c+ _tmp_65[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جك'"));
             _res = _keyword;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_65[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جک'"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جك'"));
     }
     { // 'jika'
         if (p->error_indicator) {
@@ -25631,7 +25631,7 @@ _tmp_66_rule(Parser *p)
     return _res;
 }
 
-// _tmp_67: 'while' | 'کتيک' | 'ketika'
+// _tmp_67: 'while' | 'كتيك' | 'ketika'
 static void *
 _tmp_67_rule(Parser *p)
 {
@@ -25661,24 +25661,24 @@ _tmp_67_rule(Parser *p)
         D(fprintf(stderr, "%*c%s _tmp_67[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'while'"));
     }
-    { // 'کتيک'
+    { // 'كتيك'
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_67[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'کتيک'"));
+        D(fprintf(stderr, "%*c> _tmp_67[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'كتيك'"));
         Token * _keyword;
         if (
-            (_keyword = _PyPegen_expect_token(p, 821))  // token='کتيک'
+            (_keyword = _PyPegen_expect_token(p, 821))  // token='كتيك'
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_67[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'کتيک'"));
+            D(fprintf(stderr, "%*c+ _tmp_67[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'كتيك'"));
             _res = _keyword;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_67[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'کتيک'"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'كتيك'"));
     }
     { // 'ketika'
         if (p->error_indicator) {
@@ -27457,7 +27457,7 @@ _loop1_93_rule(Parser *p)
     return _seq;
 }
 
-// _tmp_94: 'if' | 'جک' | 'jika'
+// _tmp_94: 'if' | 'جك' | 'jika'
 static void *
 _tmp_94_rule(Parser *p)
 {
@@ -27487,24 +27487,24 @@ _tmp_94_rule(Parser *p)
         D(fprintf(stderr, "%*c%s _tmp_94[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'if'"));
     }
-    { // 'جک'
+    { // 'جك'
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_94[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جک'"));
+        D(fprintf(stderr, "%*c> _tmp_94[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جك'"));
         Token * _keyword;
         if (
-            (_keyword = _PyPegen_expect_token(p, 814))  // token='جک'
+            (_keyword = _PyPegen_expect_token(p, 814))  // token='جك'
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_94[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جک'"));
+            D(fprintf(stderr, "%*c+ _tmp_94[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جك'"));
             _res = _keyword;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_94[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جک'"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جك'"));
     }
     { // 'jika'
         if (p->error_indicator) {
@@ -29003,7 +29003,7 @@ _loop1_117_rule(Parser *p)
     return _seq;
 }
 
-// _tmp_118: 'if' | 'جک' | 'jika'
+// _tmp_118: 'if' | 'جك' | 'jika'
 static void *
 _tmp_118_rule(Parser *p)
 {
@@ -29033,24 +29033,24 @@ _tmp_118_rule(Parser *p)
         D(fprintf(stderr, "%*c%s _tmp_118[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'if'"));
     }
-    { // 'جک'
+    { // 'جك'
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_118[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جک'"));
+        D(fprintf(stderr, "%*c> _tmp_118[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جك'"));
         Token * _keyword;
         if (
-            (_keyword = _PyPegen_expect_token(p, 814))  // token='جک'
+            (_keyword = _PyPegen_expect_token(p, 814))  // token='جك'
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_118[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جک'"));
+            D(fprintf(stderr, "%*c+ _tmp_118[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جك'"));
             _res = _keyword;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_118[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جک'"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جك'"));
     }
     { // 'jika'
         if (p->error_indicator) {
@@ -32249,7 +32249,7 @@ _tmp_165_rule(Parser *p)
     return _res;
 }
 
-// _loop0_166: (('if' | 'جک' | 'jika') disjunction)
+// _loop0_166: (('if' | 'جك' | 'jika') disjunction)
 static asdl_seq *
 _loop0_166_rule(Parser *p)
 {
@@ -32270,15 +32270,15 @@ _loop0_166_rule(Parser *p)
     }
     Py_ssize_t _children_capacity = 1;
     Py_ssize_t _n = 0;
-    { // (('if' | 'جک' | 'jika') disjunction)
+    { // (('if' | 'جك' | 'jika') disjunction)
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _loop0_166[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "(('if' | 'جک' | 'jika') disjunction)"));
+        D(fprintf(stderr, "%*c> _loop0_166[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "(('if' | 'جك' | 'jika') disjunction)"));
         void *_tmp_269_var;
         while (
-            (_tmp_269_var = _tmp_269_rule(p))  // ('if' | 'جک' | 'jika') disjunction
+            (_tmp_269_var = _tmp_269_rule(p))  // ('if' | 'جك' | 'jika') disjunction
         )
         {
             _res = _tmp_269_var;
@@ -32298,7 +32298,7 @@ _loop0_166_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _loop0_166[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "(('if' | 'جک' | 'jika') disjunction)"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "(('if' | 'جك' | 'jika') disjunction)"));
     }
     asdl_seq *_seq = (asdl_seq*)_Py_asdl_generic_seq_new(_n, p->arena);
     if (!_seq) {
@@ -32463,7 +32463,7 @@ _tmp_168_rule(Parser *p)
     return _res;
 }
 
-// _loop0_169: (('if' | 'جک' | 'jika') disjunction)
+// _loop0_169: (('if' | 'جك' | 'jika') disjunction)
 static asdl_seq *
 _loop0_169_rule(Parser *p)
 {
@@ -32484,15 +32484,15 @@ _loop0_169_rule(Parser *p)
     }
     Py_ssize_t _children_capacity = 1;
     Py_ssize_t _n = 0;
-    { // (('if' | 'جک' | 'jika') disjunction)
+    { // (('if' | 'جك' | 'jika') disjunction)
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _loop0_169[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "(('if' | 'جک' | 'jika') disjunction)"));
+        D(fprintf(stderr, "%*c> _loop0_169[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "(('if' | 'جك' | 'jika') disjunction)"));
         void *_tmp_270_var;
         while (
-            (_tmp_270_var = _tmp_270_rule(p))  // ('if' | 'جک' | 'jika') disjunction
+            (_tmp_270_var = _tmp_270_rule(p))  // ('if' | 'جك' | 'jika') disjunction
         )
         {
             _res = _tmp_270_var;
@@ -32512,7 +32512,7 @@ _loop0_169_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _loop0_169[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "(('if' | 'جک' | 'jika') disjunction)"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "(('if' | 'جك' | 'jika') disjunction)"));
     }
     asdl_seq *_seq = (asdl_seq*)_Py_asdl_generic_seq_new(_n, p->arena);
     if (!_seq) {
@@ -34196,7 +34196,7 @@ _tmp_199_rule(Parser *p)
     return _res;
 }
 
-// _tmp_200: 'if' | 'جک' | 'jika'
+// _tmp_200: 'if' | 'جك' | 'jika'
 static void *
 _tmp_200_rule(Parser *p)
 {
@@ -34226,24 +34226,24 @@ _tmp_200_rule(Parser *p)
         D(fprintf(stderr, "%*c%s _tmp_200[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'if'"));
     }
-    { // 'جک'
+    { // 'جك'
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_200[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جک'"));
+        D(fprintf(stderr, "%*c> _tmp_200[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جك'"));
         Token * _keyword;
         if (
-            (_keyword = _PyPegen_expect_token(p, 814))  // token='جک'
+            (_keyword = _PyPegen_expect_token(p, 814))  // token='جك'
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_200[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جک'"));
+            D(fprintf(stderr, "%*c+ _tmp_200[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جك'"));
             _res = _keyword;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_200[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جک'"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جك'"));
     }
     { // 'jika'
         if (p->error_indicator) {
@@ -34402,7 +34402,7 @@ _tmp_202_rule(Parser *p)
     return _res;
 }
 
-// _tmp_203: 'if' | 'جک' | 'jika'
+// _tmp_203: 'if' | 'جك' | 'jika'
 static void *
 _tmp_203_rule(Parser *p)
 {
@@ -34432,24 +34432,24 @@ _tmp_203_rule(Parser *p)
         D(fprintf(stderr, "%*c%s _tmp_203[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'if'"));
     }
-    { // 'جک'
+    { // 'جك'
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_203[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جک'"));
+        D(fprintf(stderr, "%*c> _tmp_203[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جك'"));
         Token * _keyword;
         if (
-            (_keyword = _PyPegen_expect_token(p, 814))  // token='جک'
+            (_keyword = _PyPegen_expect_token(p, 814))  // token='جك'
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_203[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جک'"));
+            D(fprintf(stderr, "%*c+ _tmp_203[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جك'"));
             _res = _keyword;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_203[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جک'"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جك'"));
     }
     { // 'jika'
         if (p->error_indicator) {
@@ -37012,7 +37012,7 @@ _tmp_243_rule(Parser *p)
     return _res;
 }
 
-// _tmp_244: 'if' | 'جک' | 'jika'
+// _tmp_244: 'if' | 'جك' | 'jika'
 static void *
 _tmp_244_rule(Parser *p)
 {
@@ -37042,24 +37042,24 @@ _tmp_244_rule(Parser *p)
         D(fprintf(stderr, "%*c%s _tmp_244[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'if'"));
     }
-    { // 'جک'
+    { // 'جك'
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_244[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جک'"));
+        D(fprintf(stderr, "%*c> _tmp_244[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جك'"));
         Token * _keyword;
         if (
-            (_keyword = _PyPegen_expect_token(p, 814))  // token='جک'
+            (_keyword = _PyPegen_expect_token(p, 814))  // token='جك'
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_244[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جک'"));
+            D(fprintf(stderr, "%*c+ _tmp_244[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جك'"));
             _res = _keyword;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_244[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جک'"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جك'"));
     }
     { // 'jika'
         if (p->error_indicator) {
@@ -37086,7 +37086,7 @@ _tmp_244_rule(Parser *p)
     return _res;
 }
 
-// _tmp_245: 'while' | 'کتيک' | 'ketika'
+// _tmp_245: 'while' | 'كتيك' | 'ketika'
 static void *
 _tmp_245_rule(Parser *p)
 {
@@ -37116,24 +37116,24 @@ _tmp_245_rule(Parser *p)
         D(fprintf(stderr, "%*c%s _tmp_245[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'while'"));
     }
-    { // 'کتيک'
+    { // 'كتيك'
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_245[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'کتيک'"));
+        D(fprintf(stderr, "%*c> _tmp_245[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'كتيك'"));
         Token * _keyword;
         if (
-            (_keyword = _PyPegen_expect_token(p, 821))  // token='کتيک'
+            (_keyword = _PyPegen_expect_token(p, 821))  // token='كتيك'
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_245[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'کتيک'"));
+            D(fprintf(stderr, "%*c+ _tmp_245[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'كتيك'"));
             _res = _keyword;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_245[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'کتيک'"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'كتيك'"));
     }
     { // 'ketika'
         if (p->error_indicator) {
@@ -38528,7 +38528,7 @@ _tmp_268_rule(Parser *p)
     return _res;
 }
 
-// _tmp_269: ('if' | 'جک' | 'jika') disjunction
+// _tmp_269: ('if' | 'جك' | 'jika') disjunction
 static void *
 _tmp_269_rule(Parser *p)
 {
@@ -38539,21 +38539,21 @@ _tmp_269_rule(Parser *p)
     }
     void * _res = NULL;
     int _mark = p->mark;
-    { // ('if' | 'جک' | 'jika') disjunction
+    { // ('if' | 'جك' | 'jika') disjunction
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_269[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('if' | 'جک' | 'jika') disjunction"));
+        D(fprintf(stderr, "%*c> _tmp_269[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('if' | 'جك' | 'jika') disjunction"));
         void *_tmp_293_var;
         expr_ty z;
         if (
-            (_tmp_293_var = _tmp_293_rule(p))  // 'if' | 'جک' | 'jika'
+            (_tmp_293_var = _tmp_293_rule(p))  // 'if' | 'جك' | 'jika'
             &&
             (z = disjunction_rule(p))  // disjunction
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_269[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('if' | 'جک' | 'jika') disjunction"));
+            D(fprintf(stderr, "%*c+ _tmp_269[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('if' | 'جك' | 'jika') disjunction"));
             _res = z;
             if (_res == NULL && PyErr_Occurred()) {
                 p->error_indicator = 1;
@@ -38564,7 +38564,7 @@ _tmp_269_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_269[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('if' | 'جک' | 'jika') disjunction"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('if' | 'جك' | 'jika') disjunction"));
     }
     _res = NULL;
   done:
@@ -38572,7 +38572,7 @@ _tmp_269_rule(Parser *p)
     return _res;
 }
 
-// _tmp_270: ('if' | 'جک' | 'jika') disjunction
+// _tmp_270: ('if' | 'جك' | 'jika') disjunction
 static void *
 _tmp_270_rule(Parser *p)
 {
@@ -38583,21 +38583,21 @@ _tmp_270_rule(Parser *p)
     }
     void * _res = NULL;
     int _mark = p->mark;
-    { // ('if' | 'جک' | 'jika') disjunction
+    { // ('if' | 'جك' | 'jika') disjunction
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_270[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('if' | 'جک' | 'jika') disjunction"));
+        D(fprintf(stderr, "%*c> _tmp_270[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "('if' | 'جك' | 'jika') disjunction"));
         void *_tmp_294_var;
         expr_ty z;
         if (
-            (_tmp_294_var = _tmp_294_rule(p))  // 'if' | 'جک' | 'jika'
+            (_tmp_294_var = _tmp_294_rule(p))  // 'if' | 'جك' | 'jika'
             &&
             (z = disjunction_rule(p))  // disjunction
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_270[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('if' | 'جک' | 'jika') disjunction"));
+            D(fprintf(stderr, "%*c+ _tmp_270[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "('if' | 'جك' | 'jika') disjunction"));
             _res = z;
             if (_res == NULL && PyErr_Occurred()) {
                 p->error_indicator = 1;
@@ -38608,7 +38608,7 @@ _tmp_270_rule(Parser *p)
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_270[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('if' | 'جک' | 'jika') disjunction"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "('if' | 'جك' | 'jika') disjunction"));
     }
     _res = NULL;
   done:
@@ -39923,7 +39923,7 @@ _tmp_292_rule(Parser *p)
     return _res;
 }
 
-// _tmp_293: 'if' | 'جک' | 'jika'
+// _tmp_293: 'if' | 'جك' | 'jika'
 static void *
 _tmp_293_rule(Parser *p)
 {
@@ -39953,24 +39953,24 @@ _tmp_293_rule(Parser *p)
         D(fprintf(stderr, "%*c%s _tmp_293[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'if'"));
     }
-    { // 'جک'
+    { // 'جك'
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_293[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جک'"));
+        D(fprintf(stderr, "%*c> _tmp_293[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جك'"));
         Token * _keyword;
         if (
-            (_keyword = _PyPegen_expect_token(p, 814))  // token='جک'
+            (_keyword = _PyPegen_expect_token(p, 814))  // token='جك'
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_293[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جک'"));
+            D(fprintf(stderr, "%*c+ _tmp_293[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جك'"));
             _res = _keyword;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_293[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جک'"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جك'"));
     }
     { // 'jika'
         if (p->error_indicator) {
@@ -39997,7 +39997,7 @@ _tmp_293_rule(Parser *p)
     return _res;
 }
 
-// _tmp_294: 'if' | 'جک' | 'jika'
+// _tmp_294: 'if' | 'جك' | 'jika'
 static void *
 _tmp_294_rule(Parser *p)
 {
@@ -40027,24 +40027,24 @@ _tmp_294_rule(Parser *p)
         D(fprintf(stderr, "%*c%s _tmp_294[%d-%d]: %s failed!\n", p->level, ' ',
                   p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'if'"));
     }
-    { // 'جک'
+    { // 'جك'
         if (p->error_indicator) {
             D(p->level--);
             return NULL;
         }
-        D(fprintf(stderr, "%*c> _tmp_294[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جک'"));
+        D(fprintf(stderr, "%*c> _tmp_294[%d-%d]: %s\n", p->level, ' ', _mark, p->mark, "'جك'"));
         Token * _keyword;
         if (
-            (_keyword = _PyPegen_expect_token(p, 814))  // token='جک'
+            (_keyword = _PyPegen_expect_token(p, 814))  // token='جك'
         )
         {
-            D(fprintf(stderr, "%*c+ _tmp_294[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جک'"));
+            D(fprintf(stderr, "%*c+ _tmp_294[%d-%d]: %s succeeded!\n", p->level, ' ', _mark, p->mark, "'جك'"));
             _res = _keyword;
             goto done;
         }
         p->mark = _mark;
         D(fprintf(stderr, "%*c%s _tmp_294[%d-%d]: %s failed!\n", p->level, ' ',
-                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جک'"));
+                  p->error_indicator ? "ERROR!" : "-", _mark, p->mark, "'جك'"));
     }
     { // 'jika'
         if (p->error_indicator) {

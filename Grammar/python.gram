@@ -127,12 +127,12 @@ simple_stmt[stmt_ty] (memo):
 
 compound_stmt[stmt_ty]:
     | &(('def'|'فوڠسي'|'fungsi') | '@' | ASYNC) function_def
-    | &('if'|'جک'|'jika') if_stmt
+    | &('if'|'جك'|'jika') if_stmt
     | &(('class'|'كلس'|'kelas') | '@') class_def
     | &(('with'|'دڠن'|'dengan') | ASYNC) with_stmt
     | &(('for'|'ونتوق'|'untuk') | ASYNC) for_stmt
     | &('try'|'چوبا'|'cuba') try_stmt
-    | &('while'|'کتيک'|'ketika') while_stmt
+    | &('while'|'كتيك'|'ketika') while_stmt
     | match_stmt
 
 # SIMPLE STATEMENTS
@@ -346,9 +346,9 @@ default[expr_ty]: '=' a=expression { a }
 
 if_stmt[stmt_ty]:
     | invalid_if_stmt
-    | ('if'|'جک'|'jika') a=named_expression ':' b=block c=elif_stmt {
+    | ('if'|'جك'|'jika') a=named_expression ':' b=block c=elif_stmt {
         _PyAST_If(a, b, CHECK(asdl_stmt_seq*, _PyPegen_singleton_seq(p, c)), EXTRA) }
-    | ('if'|'جک'|'jika') a=named_expression ':' b=block c=[else_block] { _PyAST_If(a, b, c, EXTRA) }
+    | ('if'|'جك'|'jika') a=named_expression ':' b=block c=[else_block] { _PyAST_If(a, b, c, EXTRA) }
 elif_stmt[stmt_ty]:
     | invalid_elif_stmt
     | 'elif' a=named_expression ':' b=block c=elif_stmt {
@@ -363,7 +363,7 @@ else_block[asdl_stmt_seq*]:
 
 while_stmt[stmt_ty]:
     | invalid_while_stmt
-    | ('while'|'کتيک'|'ketika') a=named_expression ':' b=block c=[else_block] { _PyAST_While(a, b, c, EXTRA) }
+    | ('while'|'كتيك'|'ketika') a=named_expression ':' b=block c=[else_block] { _PyAST_While(a, b, c, EXTRA) }
 
 # For statement
 # -------------
@@ -435,7 +435,7 @@ case_block[match_case_ty]:
     | "case" pattern=patterns guard=guard? ':' body=block {
         _PyAST_match_case(pattern, guard, body, p->arena) }
 
-guard[expr_ty]: ('if'|'جک'|'jika') guard=named_expression { guard }
+guard[expr_ty]: ('if'|'جك'|'jika') guard=named_expression { guard }
 
 patterns[pattern_ty]:
     | patterns[asdl_pattern_seq*]=open_sequence_pattern {
@@ -618,7 +618,7 @@ expressions[expr_ty]:
 
 expression[expr_ty] (memo):
     | invalid_expression
-    | a=disjunction ('if'|'جک'|'jika') b=disjunction ('else'|'لاءين'|'lain') c=expression { _PyAST_IfExp(b, a, c, EXTRA) }
+    | a=disjunction ('if'|'جك'|'jika') b=disjunction ('else'|'لاءين'|'lain') c=expression { _PyAST_IfExp(b, a, c, EXTRA) }
     | disjunction
     | lambdef
 
@@ -888,9 +888,9 @@ for_if_clauses[asdl_comprehension_seq*]:
     | a[asdl_comprehension_seq*]=for_if_clause+ { a }
 
 for_if_clause[comprehension_ty]:
-    | ASYNC ('for'|'ونتوق'|'untuk') a=star_targets ('in'|'دالم'|'dalam') ~ b=disjunction c[asdl_expr_seq*]=(('if'|'جک'|'jika') z=disjunction { z })* {
+    | ASYNC ('for'|'ونتوق'|'untuk') a=star_targets ('in'|'دالم'|'dalam') ~ b=disjunction c[asdl_expr_seq*]=(('if'|'جك'|'jika') z=disjunction { z })* {
         CHECK_VERSION(comprehension_ty, 6, "Async comprehensions are", _PyAST_comprehension(a, b, c, 1, p->arena)) }
-    | ('for'|'ونتوق'|'untuk') a=star_targets ('in'|'دالم'|'dalam') ~ b=disjunction c[asdl_expr_seq*]=(('if'|'جک'|'jika') z=disjunction { z })* {
+    | ('for'|'ونتوق'|'untuk') a=star_targets ('in'|'دالم'|'dalam') ~ b=disjunction c[asdl_expr_seq*]=(('if'|'جك'|'jika') z=disjunction { z })* {
         _PyAST_comprehension(a, b, c, 0, p->arena) }
     | invalid_for_target
 
@@ -1069,7 +1069,7 @@ invalid_kwarg:
             a, b, "expression cannot contain assignment, perhaps you meant \"==\"?") }
 
 expression_without_invalid[expr_ty]:
-    | a=disjunction ('if'|'جک'|'jika') b=disjunction ('else'|'لاءين'|'lain') c=expression { _PyAST_IfExp(b, a, c, EXTRA) }
+    | a=disjunction ('if'|'جك'|'jika') b=disjunction ('else'|'لاءين'|'lain') c=expression { _PyAST_IfExp(b, a, c, EXTRA) }
     | disjunction
     | lambdef
 invalid_legacy_expression:
@@ -1083,7 +1083,7 @@ invalid_expression:
     # Soft keywords need to also be ignored because they can be parsed as NAME NAME
    | !(NAME STRING | SOFT_KEYWORD) a=disjunction b=expression_without_invalid {
         RAISE_SYNTAX_ERROR_KNOWN_RANGE(a, b, "invalid syntax. Perhaps you forgot a comma?") }
-   | a=disjunction ('if'|'جک'|'jika') b=disjunction !(('else'|'لاءين'|'lain')|':') { RAISE_SYNTAX_ERROR_KNOWN_RANGE(a, b, "expected ('else'|'لاءين'|'lain') after ('if'|'جک'|'jika') expression") }
+   | a=disjunction ('if'|'جك'|'jika') b=disjunction !(('else'|'لاءين'|'lain')|':') { RAISE_SYNTAX_ERROR_KNOWN_RANGE(a, b, "expected ('else'|'لاءين'|'lain') after ('if'|'جك'|'jika') expression") }
 
 invalid_named_expression:
     | a=expression ':=' expression {
@@ -1216,9 +1216,9 @@ invalid_class_pattern:
 invalid_class_argument_pattern[asdl_pattern_seq*]:
     | [positional_patterns ','] keyword_patterns ',' a=positional_patterns { a }
 invalid_if_stmt:
-    | ('if'|'جک'|'jika') named_expression NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
+    | ('if'|'جك'|'jika') named_expression NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
     | a='if' a=named_expression ':' NEWLINE !INDENT {
-        RAISE_INDENTATION_ERROR("expected an indented block after ('if'|'جک'|'jika') statement on line %d", a->lineno) }
+        RAISE_INDENTATION_ERROR("expected an indented block after ('if'|'جك'|'jika') statement on line %d", a->lineno) }
 invalid_elif_stmt:
     | 'elif' named_expression NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
     | a='elif' named_expression ':' NEWLINE !INDENT {
@@ -1227,9 +1227,9 @@ invalid_else_stmt:
     | a='else' ':' NEWLINE !INDENT {
         RAISE_INDENTATION_ERROR("expected an indented block after ('else'|'لاءين'|'lain') statement on line %d", a->lineno) }
 invalid_while_stmt:
-    | ('while'|'کتيک'|'ketika') named_expression NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
+    | ('while'|'كتيك'|'ketika') named_expression NEWLINE { RAISE_SYNTAX_ERROR("expected ':'") }
     | a='while' named_expression ':' NEWLINE !INDENT {
-        RAISE_INDENTATION_ERROR("expected an indented block after ('while'|'کتيک'|'ketika') statement on line %d", a->lineno) }
+        RAISE_INDENTATION_ERROR("expected an indented block after ('while'|'كتيك'|'ketika') statement on line %d", a->lineno) }
 invalid_for_stmt:
     | [ASYNC] a='for' star_targets ('in'|'دالم'|'dalam') star_expressions ':' NEWLINE !INDENT {
         RAISE_INDENTATION_ERROR("expected an indented block after ('for'|'ونتوق'|'untuk') statement on line %d", a->lineno) }

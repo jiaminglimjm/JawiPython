@@ -54,7 +54,7 @@ finally  akhirnya             اخيرڽ
 for      untuk                ونتوق
 from     dari                 دري
 global   =                    =
-if       jika                 جک
+if       jika                 جك
 import   =                    =
 in       dalam                دالم
 is       ialah                اياله
@@ -66,7 +66,7 @@ pass     =                    =
 raise    =                    =
 return   kembali              كمبالي
 try      cuba                 چوبا
-while    ketika               کتيک
+while    ketika               كتيك
 with     dengan               دڠن
 yield    =                    =
 ======== ==================== ====================
@@ -172,15 +172,15 @@ classmethod               =                           =
 compile                   =                           =
 complex                   =                           =
 copyright                 hakcipta                    حقچيڤتا
-credits                   penghargaan                 ڤڠهرݢاءن
+credits                   penghargaan                 ڤڠهرڬاءن
 delattr                   =                           =
 dict                      kamus                       قاموس
 dir                       =                           =
 divmod                    =                           =
-enumerate                 mengangkakan                مڠڠکاکن
+enumerate                 mengangkakan                مڠڠكاكن
 eval                      =                           =
 exec                      jalan                       جالن
-exit                      keluar                      کلوار
+exit                      keluar                      كلوار
 filter                    =                           =
 float                     =                           =
 format                    =                           =
@@ -193,7 +193,7 @@ help                      bantu                       بنتو
 hex                       =                           =
 id                        =                           =
 input                     =                           =
-int                       =                           =
+int                       =                           اينتيڬر
 isinstance                =                           =
 issubclass                =                           =
 iter                      =                           =
@@ -208,7 +208,7 @@ min                       =                           =
 next                      =                           =
 object                    =                           =
 oct                       =                           =
-open                      buka                        بوک
+open                      buka                        بوك
 ord                       =                           =
 pow                       =                           =
 print                     cetak                       چيتق
