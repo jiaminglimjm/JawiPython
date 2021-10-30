@@ -18,7 +18,9 @@ Untuk mengetahui lebih lanjut tentang pengkompilan untuk MacOS dan Windows, sila
 
 .. _github.com/python/cpython#build-instructions: https://github.com/python/cpython#build-instructions
 
-.. image:: https://raw.githubusercontent.com/jiaminglimjm/JawiPython/master/CONTOH_CONTOH/ProjekEulerMasalah1.png
+.. image:: https://raw.githubusercontent.com/jiaminglimjm/JawiPython/master/CONTOH_CONTOH/ProjekEulerMasalah1_RUMI.png
+
+.. image:: https://raw.githubusercontent.com/jiaminglimjm/JawiPython/master/CONTOH_CONTOH/ProjekEulerMasalah1_JAWI.png
 
 `Fail contoh di sini`_
 
