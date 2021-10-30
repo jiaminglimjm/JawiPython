@@ -466,7 +466,7 @@ class CParserGenerator(ParserGenerator, GrammarVisitor):
 
     def _setup_keywords(self) -> None:
         n_keyword_lists = (
-            len(max(self.keywords.keys(), key=len)) + 1 if len(self.keywords) > 0 else 0
+            len(max(self.keywords.keys(), key=lambda x:len(x.encode())).encode()) + 1 if len(self.keywords) > 0 else 0
         )
         self.print(f"static const int n_keyword_lists = {n_keyword_lists};")
         groups = self._group_keywords_by_length()

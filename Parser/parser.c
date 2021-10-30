@@ -6,7 +6,7 @@
 #else
 #  define D(x)
 #endif
-static const int n_keyword_lists = 9;
+static const int n_keyword_lists = 13;
 static KeywordToken *reserved_keywords[] = {
     (KeywordToken[]) {{NULL, -1}},
     (KeywordToken[]) {{NULL, -1}},
