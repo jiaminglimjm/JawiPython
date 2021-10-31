@@ -130,7 +130,7 @@ compound_stmt[stmt_ty]:
     | &('if'|'جك'|'jika') if_stmt
     | &(('class'|'كلس'|'kelas') | '@') class_def
     | &(('with'|'دڠن'|'dengan') | ASYNC) with_stmt
-    | &(('for'|'ونتوق'|'untuk') | ASYNC) for_stmt
+    | &(('for'|'اونتوق'|'untuk') | ASYNC) for_stmt
     | &('try'|'چوبا'|'cuba') try_stmt
     | &('while'|'كتيك'|'ketika') while_stmt
     | match_stmt
@@ -370,9 +370,9 @@ while_stmt[stmt_ty]:
 
 for_stmt[stmt_ty]:
     | invalid_for_stmt
-    | ('for'|'ونتوق'|'untuk') t=star_targets ('in'|'دالم'|'dalam') ~ ex=star_expressions &&':' tc=[TYPE_COMMENT] b=block el=[else_block] {
+    | ('for'|'اونتوق'|'untuk') t=star_targets ('in'|'دالم'|'dalam') ~ ex=star_expressions &&':' tc=[TYPE_COMMENT] b=block el=[else_block] {
         _PyAST_For(t, ex, b, el, NEW_TYPE_COMMENT(p, tc), EXTRA) }
-    | ASYNC ('for'|'ونتوق'|'untuk') t=star_targets ('in'|'دالم'|'dalam') ~ ex=star_expressions &&':' tc=[TYPE_COMMENT] b=block el=[else_block] {
+    | ASYNC ('for'|'اونتوق'|'untuk') t=star_targets ('in'|'دالم'|'dalam') ~ ex=star_expressions &&':' tc=[TYPE_COMMENT] b=block el=[else_block] {
         CHECK_VERSION(stmt_ty, 5, "Async for loops are", _PyAST_AsyncFor(t, ex, b, el, NEW_TYPE_COMMENT(p, tc), EXTRA)) }
     | invalid_for_target
 
@@ -888,9 +888,9 @@ for_if_clauses[asdl_comprehension_seq*]:
     | a[asdl_comprehension_seq*]=for_if_clause+ { a }
 
 for_if_clause[comprehension_ty]:
-    | ASYNC ('for'|'ونتوق'|'untuk') a=star_targets ('in'|'دالم'|'dalam') ~ b=disjunction c[asdl_expr_seq*]=(('if'|'جك'|'jika') z=disjunction { z })* {
+    | ASYNC ('for'|'اونتوق'|'untuk') a=star_targets ('in'|'دالم'|'dalam') ~ b=disjunction c[asdl_expr_seq*]=(('if'|'جك'|'jika') z=disjunction { z })* {
         CHECK_VERSION(comprehension_ty, 6, "Async comprehensions are", _PyAST_comprehension(a, b, c, 1, p->arena)) }
-    | ('for'|'ونتوق'|'untuk') a=star_targets ('in'|'دالم'|'dalam') ~ b=disjunction c[asdl_expr_seq*]=(('if'|'جك'|'jika') z=disjunction { z })* {
+    | ('for'|'اونتوق'|'untuk') a=star_targets ('in'|'دالم'|'dalam') ~ b=disjunction c[asdl_expr_seq*]=(('if'|'جك'|'jika') z=disjunction { z })* {
         _PyAST_comprehension(a, b, c, 0, p->arena) }
     | invalid_for_target
 
@@ -1160,7 +1160,7 @@ invalid_with_item:
         RAISE_SYNTAX_ERROR_INVALID_TARGET(STAR_TARGETS, a) }
 
 invalid_for_target:
-    | ASYNC? ('for'|'ونتوق'|'untuk') a=star_expressions {
+    | ASYNC? ('for'|'اونتوق'|'untuk') a=star_expressions {
         RAISE_SYNTAX_ERROR_INVALID_TARGET(FOR_TARGETS, a) }
 
 invalid_group:
@@ -1232,7 +1232,7 @@ invalid_while_stmt:
         RAISE_INDENTATION_ERROR("expected an indented block after ('while'|'كتيك'|'ketika') statement on line %d", a->lineno) }
 invalid_for_stmt:
     | [ASYNC] a='for' star_targets ('in'|'دالم'|'dalam') star_expressions ':' NEWLINE !INDENT {
-        RAISE_INDENTATION_ERROR("expected an indented block after ('for'|'ونتوق'|'untuk') statement on line %d", a->lineno) }
+        RAISE_INDENTATION_ERROR("expected an indented block after ('for'|'اونتوق'|'untuk') statement on line %d", a->lineno) }
 invalid_def_raw:
     | [ASYNC] a='def' NAME '(' [params] ')' ['->' expression] ':' NEWLINE !INDENT {
         RAISE_INDENTATION_ERROR("expected an indented block after function definition on line %d", a->lineno) }

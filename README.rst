@@ -51,7 +51,7 @@ elif     =                    =
 else     lain                 لاءين
 except   kecuali              كچوالي
 finally  akhirnya             اخيرڽ
-for      untuk                ونتوق
+for      untuk                اونتوق
 from     dari                 دري
 global   =                    =
 if       jika                 جك
