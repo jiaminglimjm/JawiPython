@@ -92,20 +92,20 @@ callable                  =                           =
 chr                       =                           =
 classmethod               =                           =
 compile                   =                           =
-complex                   =                           =
-copyright                 hakcipta                    حقچيڤتا
-credits                   penghargaan                 ڤڠهرڬاءن
+complex                   kompleks                    =
+copyright                 hakcipta                    =
+credits                   penghargaan                 ڤڠهرݢاءن
 delattr                   =                           =
 dict                      kamus                       قاموس
 dir                       =                           =
 divmod                    =                           =
-enumerate                 mengangkakan                مڠڠكاكن
+enumerate                 mengangkakan                مڠڠکاکن
 eval                      =                           =
 exec                      jalan                       جالن
-exit                      keluar                      كلوار
+exit                      keluar                      کلوار
 filter                    =                           =
 float                     =                           =
-format                    =                           =
+format                    =                           فورمت
 frozenset                 =                           =
 getattr                   =                           =
 globals                   =                           =
@@ -114,8 +114,8 @@ hash                      =                           =
 help                      bantu                       بنتو
 hex                       =                           =
 id                        =                           =
-input                     =                           =
-int                       =                           اينتيڬر
+input                     =                           اينڤوت
+int                       =                           اينتيݢر
 isinstance                =                           =
 issubclass                =                           =
 iter                      =                           =
@@ -124,13 +124,13 @@ license                   =                           =
 list                      senarai                     سناراي
 locals                    =                           =
 map                       =                           =
-max                       =                           =
+max                       =                           مکسيموم
 memoryview                =                           =
-min                       =                           =
+min                       =                           مينيموم
 next                      =                           =
-object                    =                           =
+object                    objek                       اوبجيک
 oct                       =                           =
-open                      buka                        بوك
+open                      buka                        بوک
 ord                       =                           =
 pow                       =                           =
 print                     cetak                       چيتق
@@ -140,7 +140,7 @@ range                     julat                       جولت
 repr                      =                           =
 reversed                  terbalik                    ترباليق
 round                     bundar                      بوندر
-set                       =                           =
+set                       =                           سيت
 setattr                   =                           =
 slice                     =                           =
 sorted                    susun                       سوسون
@@ -152,6 +152,8 @@ tuple                     =                           =
 type                      tipe                        تيڤى
 vars                      =                           =
 zip                       =                           ='''
+
+pisah = str.split
 
 s = 'import builtins\n\n'
 
