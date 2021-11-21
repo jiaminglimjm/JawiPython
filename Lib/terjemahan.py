@@ -2,8 +2,12 @@ import builtins
 
 builtins.__nama__ = __name__
 builtins.__نام__ = __name__
+builtins.mutlak = abs
+builtins.مطلق = abs
 builtins.semua = all
 builtins.سموا = all
+builtins.bait = bytes
+builtins.باءيت = bytes
 builtins.kompleks = complex
 builtins.hakcipta = copyright
 builtins.penghargaan = credits

@@ -79,7 +79,7 @@ __loader__                =                           =
 __name__                  __nama__                    __نام__
 __package__               =                           =
 __spec__                  =                           =
-abs                       =                           =
+abs                       mutlak                      مطلق
 all                       semua                       سموا
 any                       =                           =
 ascii                     =                           =
@@ -87,7 +87,7 @@ bin                       =                           =
 bool                      =                           =
 breakpoint                =                           =
 bytearray                 =                           =
-bytes                     =                           =
+bytes                     bait                        باءيت
 callable                  =                           =
 chr                       =                           =
 classmethod               =                           =

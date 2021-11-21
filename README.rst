@@ -165,7 +165,7 @@ bin                       =                           =
 bool                      =                           =
 breakpoint                =                           =
 bytearray                 =                           =
-bytes                     =                           =
+bytes                     bait                        باءيت
 callable                  =                           =
 chr                       =                           =
 classmethod               =                           =
